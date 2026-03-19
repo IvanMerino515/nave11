@@ -1,0 +1,239 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 200;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.panel {
+  width: min(420px, 100vw);
+  height: 100vh;
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  overflow-y: auto;
+  position: relative;
+}
+
+/* En vista mapa: panel lateral inline, no overlay */
+.panelInline {
+  width: 380px;
+  flex-shrink: 0;
+  height: 100%;
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  overflow-y: auto;
+  position: relative;
+}
+
+.close {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 1;
+  font-family: var(--font-body);
+  transition: color 0.15s;
+}
+
+.close:hover {
+  color: var(--color-text);
+}
+
+.header {
+  padding: var(--space-5) var(--space-4) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cat {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-text);
+  opacity: 0.5;
+}
+
+.nombre {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.15;
+  margin-top: var(--space-2);
+  color: var(--color-text);
+}
+
+.direccion {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.star {
+  color: var(--color-text);
+}
+
+.reviews {
+  font-size: 0.75rem;
+}
+
+.body {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.desc {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.evento {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-text);
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.eventoLabel {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text);
+  opacity: 0.5;
+}
+
+.eventoTitulo {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--color-text);
+}
+
+.eventoFechas {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.eventoDesc {
+  font-size: 0.82rem;
+  color: var(--color-text);
+  margin-top: var(--space-2);
+  line-height: 1.5;
+}
+
+.sectionTitle {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text);
+  opacity: 0.5;
+  margin-bottom: var(--space-2);
+}
+
+.horariosGrid {
+  display: flex;
+  flex-direction: column;
+}
+
+.dia {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  padding: var(--space-1) 0;
+  border-bottom: 1px solid rgba(45, 45, 45, 0.2);
+}
+
+.dia:last-child {
+  border-bottom: none;
+}
+
+.diaLabel {
+  color: var(--color-text-muted);
+  font-weight: 500;
+  width: 40px;
+}
+
+.diaHora {
+  color: var(--color-text);
+}
+
+.dia.cerrado .diaHora {
+  color: var(--color-text-muted);
+  opacity: 0.5;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tag {
+  font-size: 0.62rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
+  opacity: 0.6;
+  background: var(--color-surface-2);
+  border-radius: var(--radius);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-border);
+}
+
+.tagAccent {
+  opacity: 1;
+  background: var(--color-text);
+  color: var(--color-accent);
+  border-color: var(--color-text);
+}
+
+.contacto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  transition: color 0.15s;
+}
+
+.contactLink:hover {
+  color: var(--color-text);
+}
+
+.contactIcon {
+  font-size: 0.9rem;
+}

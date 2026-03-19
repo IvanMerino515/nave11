@@ -1,0 +1,205 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg);
+}
+
+/* Nav amarilla */
+.nav {
+  background-color: var(--color-nav-bg);
+  padding: 8px 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.brandSub {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--color-nav-text);
+  letter-spacing: 0.01em;
+}
+
+.viewToggle {
+  display: flex;
+  gap: 16px;
+}
+
+.viewBtn {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-nav-text);
+  opacity: 0.55;
+  font-family: var(--font-body);
+  transition: opacity 0.15s;
+}
+
+.viewBtn.active {
+  font-weight: 700;
+  opacity: 1;
+}
+
+.viewBtn:hover:not(.active) {
+  opacity: 0.85;
+}
+
+/* Filtros */
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-3) var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.search {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.search::placeholder {
+  color: var(--color-text-muted);
+}
+
+.search:focus {
+  border-color: var(--color-text);
+}
+
+.filterRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.groupLabel {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-text-muted);
+}
+
+.divider {
+  width: 1px;
+  background: var(--color-border);
+  align-self: stretch;
+  margin-top: 18px;
+}
+
+.catFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.catBtn {
+  padding: 3px var(--space-3);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: transparent;
+  font-family: var(--font-body);
+  transition: background 0.15s;
+}
+
+.catBtn:hover {
+  background: rgba(45, 45, 45, 0.1);
+}
+
+.catBtn.active {
+  background: var(--color-nav-text);
+  color: var(--color-accent);
+  border-color: var(--color-nav-text);
+}
+
+/* Gastro buttons tienen un estilo ligeramente diferente */
+.catBtnGastro {
+  opacity: 0.85;
+}
+
+.activeGastro {
+  background: var(--color-nav-text);
+  color: var(--color-accent);
+  border-color: var(--color-nav-text);
+  opacity: 1;
+}
+
+.toggleFilters {
+  display: flex;
+  gap: var(--space-6);
+  padding: 0 2px;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+.toggle input[type="checkbox"] {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.toggle input[type="checkbox"]:checked {
+  background: var(--color-nav-text);
+  border-color: var(--color-nav-text);
+}
+
+.toggle input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 1px;
+  width: 5px;
+  height: 8px;
+  border: 1.5px solid var(--color-accent);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}

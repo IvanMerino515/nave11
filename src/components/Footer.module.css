@@ -1,0 +1,86 @@
+.footer {
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-8);
+  padding: var(--space-5) var(--space-3);
+}
+
+.inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.logo {
+  height: 48px;
+  width: auto;
+  opacity: 0.85;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  display: block;
+}
+
+.sub {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  display: block;
+  margin-top: 2px;
+}
+
+.meta {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  text-align: right;
+}
+
+.cta {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.ctaLink {
+  font-size: 0.8rem;
+  color: var(--color-text);
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+
+.ctaLink:hover {
+  opacity: 0.7;
+}
+
+.firma {
+  font-size: 0.68rem;
+  color: var(--color-text);
+  margin-top: var(--space-3);
+  transition: opacity 0.15s;
+}
+
+.firma:hover {
+  opacity: 0.7;
+}
