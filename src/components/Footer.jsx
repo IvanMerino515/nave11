@@ -9,8 +9,8 @@ export default function Footer() {
           <div className={styles.brandRow}>
             <img src={logoCompleto} alt="Nave11" className={styles.logo} />
           </div>
-          <span className={styles.sub}>Mapa cultural de Carabanchel · Proyecto independiente · Distrito 11, Madrid</span>
-          <span className={styles.meta}>Datos verificados · Actualizado en 2026</span>
+          <span className={styles.sub}>Distrito 11, Carabanchel, Madrid · Proyecto independiente · Sin publicidad</span>
+          <span className={styles.meta}>Datos verificados · 2026</span>
         </div>
         <div className={styles.right}>
           <p className={styles.cta}>¿Gestionas un espacio y no apareces?</p>

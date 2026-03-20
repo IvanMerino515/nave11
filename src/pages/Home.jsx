@@ -21,7 +21,7 @@ export default function Home() {
   const filtros = useFilter(espaciosOrdenados)
   const { filtered } = filtros
 
-  const hayFiltros = filtros.categoria || filtros.soloEntradaLibre || filtros.soloAbreSabados || filtros.query
+  const hayFiltros = filtros.categoria || filtros.soloEntradaLibre || filtros.soloAbreSabados || filtros.soloHistorico || filtros.query
 
   return (
     <div className={styles.app}>

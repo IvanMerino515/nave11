@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Header.module.css'
 import isotipo from '../images/isotipo_black.png'
@@ -6,6 +7,7 @@ const CATEGORIAS_CULTURA = [
   { value: 'galeria', label: 'Galerías' },
   { value: 'nave', label: 'Naves' },
   { value: 'estudio', label: 'Estudios' },
+  { value: 'sala', label: 'Salas' },
   { value: 'musica', label: 'Música y danza' },
   { value: 'fotografia', label: 'Arte digital' },
   { value: 'cultural', label: 'Centros culturales' },
@@ -17,12 +19,45 @@ const CATEGORIAS_GASTRO = [
   { value: 'cafe', label: 'Café' },
   { value: 'restaurante', label: 'Restaurantes' },
   { value: 'tapas', label: 'Tapas' },
+  { value: 'castizo', label: 'Castizos' },
+]
+
+const CATEGORIAS_BARRIO = [
+  { value: 'libreria', label: 'Librerías' },
+  { value: 'comercio', label: 'Comercios' },
 ]
 
 export default function Header({ vista, setVista, filtros }) {
-  const { categoria, setCategoria, soloEntradaLibre, setSoloEntradaLibre, soloAbreSabados, setSoloAbreSabados, query, setQuery } = filtros
+  const {
+    categoria, setCategoria,
+    soloEntradaLibre, setSoloEntradaLibre,
+    soloAbreSabados, setSoloAbreSabados,
+    soloHistorico, setSoloHistorico,
+    query, setQuery,
+  } = filtros
+  const [filtersOpen, setFiltersOpen] = useState(true)
+  const manualOverride = useRef(false)
 
   const toggle = (val) => setCategoria(categoria === val ? '' : val)
+  const hayFiltrosActivos = categoria !== '' || soloEntradaLibre || soloAbreSabados || soloHistorico || query !== ''
+
+  const handleFilterToggle = () => {
+    manualOverride.current = true
+    setFiltersOpen(o => !o)
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY <= 8) {
+        manualOverride.current = false
+        setFiltersOpen(true)
+      } else if (!manualOverride.current) {
+        setFiltersOpen(false)
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <header className={styles.header}>
@@ -31,14 +66,23 @@ export default function Header({ vista, setVista, filtros }) {
           <img src={isotipo} alt="Nave11" className={styles.logo} />
           <span className={styles.brandSub}>Mapa cultural de Carabanchel</span>
         </div>
-        <div className={styles.viewToggle}>
-          <button className={`${styles.viewBtn} ${vista === 'lista' ? styles.active : ''}`} onClick={() => setVista('lista')}>Lista</button>
-          <button className={`${styles.viewBtn} ${vista === 'mapa' ? styles.active : ''}`} onClick={() => setVista('mapa')}>Mapa</button>
-          <Link to="/planes" className={styles.viewBtn}>Planes</Link>
+        <div className={styles.navRight}>
+          <div className={styles.viewToggle}>
+            <button className={`${styles.viewBtn} ${vista === 'lista' ? styles.active : ''}`} onClick={() => setVista('lista')}>Lista</button>
+            <button className={`${styles.viewBtn} ${vista === 'mapa' ? styles.active : ''}`} onClick={() => setVista('mapa')}>Mapa</button>
+            <Link to="/planes" className={styles.viewBtn}>Planes</Link>
+          </div>
+          <button
+            className={`${styles.filterToggle} ${hayFiltrosActivos ? styles.filterToggleActive : ''}`}
+            onClick={handleFilterToggle}
+            aria-label="Filtros"
+          >
+            {filtersOpen ? '↑' : '↓'} Filtros{hayFiltrosActivos ? ' ·' : ''}
+          </button>
         </div>
       </div>
 
-      <div className={styles.filters}>
+      <div className={`${styles.filters} ${!filtersOpen ? styles.filtersHidden : ''}`}>
         <input
           type="search"
           className={styles.search}
@@ -76,6 +120,18 @@ export default function Header({ vista, setVista, filtros }) {
               ))}
             </div>
           </div>
+
+          <div className={styles.divider} />
+
+          {/* Tejido de barrio */}
+          <div className={styles.filterGroup}>
+            <span className={styles.groupLabel}>Barrio</span>
+            <div className={styles.catFilters}>
+              {CATEGORIAS_BARRIO.map((c) => (
+                <button key={c.value} className={`${styles.catBtn} ${styles.catBtnBarrio} ${categoria === c.value ? styles.activeBarrio : ''}`} onClick={() => toggle(c.value)}>{c.label}</button>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className={styles.toggleFilters}>
@@ -86,6 +142,10 @@ export default function Header({ vista, setVista, filtros }) {
           <label className={styles.toggle}>
             <input type="checkbox" checked={soloAbreSabados} onChange={(e) => setSoloAbreSabados(e.target.checked)} />
             <span>Abre sábados</span>
+          </label>
+          <label className={styles.toggle}>
+            <input type="checkbox" checked={soloHistorico} onChange={(e) => setSoloHistorico(e.target.checked)} />
+            <span>De toda la vida</span>
           </label>
         </div>
       </div>

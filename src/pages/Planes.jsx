@@ -5,13 +5,13 @@ import styles from './Planes.module.css'
 
 const CATEGORIA_LABEL = {
   galeria: 'Galería', nave: 'Nave', estudio: 'Estudio',
-  musica: 'Música', fotografia: 'Arte digital', cultural: 'Cultural',
-  hosteleria: 'Hostelería',
+  musica: 'Música', sala: 'Sala', fotografia: 'Arte digital',
+  cultural: 'Cultural', libreria: 'Librería', comercio: 'Comercio',
 }
 
 const TIPO_LABEL = {
   vinos: 'Vinos', cerveza: 'Cerveza', cafe: 'Café',
-  restaurante: 'Restaurante', tapas: 'Tapas',
+  restaurante: 'Restaurante', tapas: 'Tapas', castizo: 'Bar castizo',
 }
 
 const TIEMPO_LABEL = { rato: '~1h', tarde: '~3h', dia: '~6h' }
@@ -54,6 +54,15 @@ const PREGUNTAS = [
       { valor: 'cafe', label: 'Café y brunch' },
       { valor: 'cerveza', label: 'Cerveza artesana' },
       { valor: 'cualquiera', label: 'Cualquier cosa' },
+    ],
+  },
+  {
+    id: 'barrio',
+    pregunta: '¿Algo más? (opcional)',
+    opciones: [
+      { valor: 'ninguno', label: 'Nada en especial' },
+      { valor: 'libreria', label: 'Pasar por una librería' },
+      { valor: 'comercio', label: 'Comprar pan artesanal' },
     ],
   },
 ]
@@ -101,7 +110,7 @@ export default function Planes() {
           → Generar plan
         </button>
 
-        {plan && (
+        {plan && plan.paradas.length > 0 && (
           <div className={styles.resultado}>
             <div className={styles.resultadoHeader}>
               <h2 className={styles.resultadoTitulo}>Tu tarde en Carabanchel</h2>
@@ -121,7 +130,7 @@ export default function Planes() {
                     <span className={styles.paradaCat}>
                       {e.categoria === 'hosteleria'
                         ? TIPO_LABEL[e.tipo_hosteleria] ?? 'Hostelería'
-                        : CATEGORIA_LABEL[e.categoria]}
+                        : CATEGORIA_LABEL[e.categoria] ?? e.categoria}
                     </span>
                     <h3 className={styles.paradaNombre}>{e.nombre}</h3>
                     <p className={styles.paradaDireccion}>{e.direccion}</p>
@@ -131,6 +140,9 @@ export default function Planes() {
                     )}
                     {e.precio && (
                       <span className={styles.paradaBadge}>{e.precio}</span>
+                    )}
+                    {e.fundado_en && (
+                      <span className={styles.paradaBadge}>Desde {e.fundado_en}</span>
                     )}
                   </div>
                 </div>

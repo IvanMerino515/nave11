@@ -34,9 +34,37 @@
   letter-spacing: 0.01em;
 }
 
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .viewToggle {
   display: flex;
   gap: 16px;
+}
+
+/* Botón filtros — solo visible en móvil */
+.filterToggle {
+  display: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-nav-text);
+  font-family: var(--font-body);
+  padding: 4px 8px;
+  border: 1px solid var(--color-nav-text);
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+.filterToggle:hover {
+  opacity: 1;
+}
+
+.filterToggleActive {
+  opacity: 1;
+  font-weight: 700;
 }
 
 .viewBtn {
@@ -64,6 +92,25 @@
   gap: var(--space-2);
   padding: var(--space-3) var(--space-3) var(--space-3);
   border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+  max-height: 320px;
+  opacity: 1;
+  transition:
+    max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filtersHidden {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+  transition:
+    max-height 0.28s cubic-bezier(0.4, 0, 1, 1),
+    opacity 0.22s cubic-bezier(0.4, 0, 1, 1),
+    padding 0.25s cubic-bezier(0.4, 0, 1, 1);
 }
 
 .search {
@@ -157,6 +204,17 @@
   opacity: 1;
 }
 
+.catBtnBarrio {
+  opacity: 0.8;
+}
+
+.activeBarrio {
+  background: var(--color-nav-text);
+  color: var(--color-accent);
+  border-color: var(--color-nav-text);
+  opacity: 1;
+}
+
 .toggleFilters {
   display: flex;
   gap: var(--space-6);
@@ -202,4 +260,16 @@
   border-top: none;
   border-left: none;
   transform: rotate(45deg);
+}
+
+@media (max-width: 768px) {
+  .brandSub {
+    display: none;
+  }
+
+  .filterToggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
 }

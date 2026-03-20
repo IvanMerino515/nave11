@@ -5,8 +5,12 @@ const CATEGORIA_LABEL = {
   nave: 'Nave',
   estudio: 'Estudio',
   musica: 'Música',
+  sala: 'Sala',
   fotografia: 'Arte digital',
   cultural: 'Cultural',
+  libreria: 'Librería',
+  comercio: 'Comercio',
+  mercado: 'Mercado',
 }
 
 const TIPO_HOSTELERIA_LABEL = {
@@ -15,6 +19,7 @@ const TIPO_HOSTELERIA_LABEL = {
   cafe: 'Café',
   restaurante: 'Restaurante',
   tapas: 'Tapas',
+  castizo: 'Bar castizo',
 }
 
 export default function SpaceCard({ espacio, onClick }) {

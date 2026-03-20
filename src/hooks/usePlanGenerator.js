@@ -2,23 +2,29 @@ import { useState } from 'react'
 import espacios from '../data/espacios.json'
 
 const NUM_PARADAS = {
-  rato:  { cultura: 1, gastro: 1 },
-  tarde: { cultura: 2, gastro: 2 },
-  dia:   { cultura: 4, gastro: 3 },
+  rato:  { cultura: 1, gastro: 1, barrio: 0 },
+  tarde: { cultura: 2, gastro: 2, barrio: 1 },
+  dia:   { cultura: 4, gastro: 3, barrio: 1 },
 }
 
 const MAPA_CULTURA = {
   galerias: (e) => e.categoria === 'galeria',
   naves:    (e) => ['nave', 'estudio'].includes(e.categoria),
   urbano:   (e) => e.tags?.includes('Arte urbano'),
-  todo:     (e) => ['galeria', 'nave', 'estudio', 'cultural'].includes(e.categoria),
+  todo:     (e) => ['galeria', 'nave', 'estudio', 'cultural', 'sala'].includes(e.categoria),
 }
 
 const MAPA_GASTRO = {
-  vino:       (e) => ['vinos', 'tapas'].includes(e.tipo_hosteleria),
+  vino:       (e) => ['vinos', 'tapas', 'castizo'].includes(e.tipo_hosteleria),
   cafe:       (e) => e.tipo_hosteleria === 'cafe',
   cerveza:    (e) => ['cerveza', 'tapas'].includes(e.tipo_hosteleria),
   cualquiera: (e) => e.categoria === 'hosteleria',
+}
+
+const MAPA_BARRIO = {
+  libreria: (e) => e.categoria === 'libreria',
+  comercio: (e) => e.categoria === 'comercio',
+  ninguno:  null,
 }
 
 function distancia(a, b) {
@@ -33,7 +39,6 @@ function centroide(lista) {
   return { lat, lng }
 }
 
-// Nearest neighbor desde centroide
 function ordenarGeograficamente(lista) {
   if (lista.length <= 1) return lista
   const c = centroide(lista)
@@ -59,12 +64,24 @@ function shuffle(arr) {
   return a
 }
 
-function intercalar(culturales, gastros) {
+// Sin parada de barrio: cultura → gastro → cultura → gastro
+// Con parada de barrio: cultura → barrio → gastro → cultura → gastro
+function intercalar(culturales, gastros, barrioStop) {
   const resultado = []
-  const maxLen = Math.max(culturales.length, gastros.length)
-  for (let i = 0; i < maxLen; i++) {
-    if (culturales[i]) resultado.push(culturales[i])
-    if (gastros[i]) resultado.push(gastros[i])
+  if (barrioStop) {
+    if (culturales[0]) resultado.push(culturales[0])
+    resultado.push(barrioStop)
+    if (gastros[0]) resultado.push(gastros[0])
+    for (let i = 1; i < Math.max(culturales.length, gastros.length); i++) {
+      if (culturales[i]) resultado.push(culturales[i])
+      if (gastros[i]) resultado.push(gastros[i])
+    }
+  } else {
+    const maxLen = Math.max(culturales.length, gastros.length)
+    for (let i = 0; i < maxLen; i++) {
+      if (culturales[i]) resultado.push(culturales[i])
+      if (gastros[i]) resultado.push(gastros[i])
+    }
   }
   return resultado
 }
@@ -75,6 +92,7 @@ export function usePlanGenerator() {
     cultura: 'todo',
     compania: 'amigos',
     gastro: 'cualquiera',
+    barrio: 'ninguno',
   })
   const [plan, setPlan] = useState(null)
 
@@ -84,12 +102,14 @@ export function usePlanGenerator() {
   }
 
   function generar() {
-    const { tiempo, cultura, compania, gastro } = respuestas
-    const { cultura: nCultura, gastro: nGastro } = NUM_PARADAS[tiempo]
+    const { tiempo, cultura, compania, gastro, barrio } = respuestas
+    const { cultura: nCultura, gastro: nGastro, barrio: nBarrio } = NUM_PARADAS[tiempo]
 
     // Pool culturales
     let poolCultura = espacios.filter(
-      (e) => e.categoria !== 'hosteleria' && MAPA_CULTURA[cultura]?.(e)
+      (e) => e.categoria !== 'hosteleria' &&
+             !['libreria', 'comercio', 'mercado'].includes(e.categoria) &&
+             MAPA_CULTURA[cultura]?.(e)
     )
     if (compania === 'ninos') {
       poolCultura = poolCultura.filter((e) => e.apto_ninos !== false)
@@ -107,8 +127,18 @@ export function usePlanGenerator() {
       if (pref.length >= nGastro) poolGastro = pref
     }
     if (compania === 'amigos') {
-      const pref = poolGastro.filter((e) => ['cerveza', 'tapas'].includes(e.tipo_hosteleria))
+      const pref = poolGastro.filter((e) => ['cerveza', 'tapas', 'castizo'].includes(e.tipo_hosteleria))
       if (pref.length >= nGastro) poolGastro = pref
+    }
+
+    // Pool barrio (solo si hay paradas de barrio según el tiempo)
+    let barrioStop = null
+    const barrioFn = MAPA_BARRIO[barrio]
+    if (nBarrio > 0 && barrioFn) {
+      const poolBarrio = espacios.filter(barrioFn)
+      if (poolBarrio.length > 0) {
+        barrioStop = shuffle(poolBarrio)[0]
+      }
     }
 
     const selCultura = shuffle(poolCultura).slice(0, nCultura)
@@ -116,9 +146,9 @@ export function usePlanGenerator() {
 
     const culturalesOrdenados = ordenarGeograficamente(selCultura)
     const gastrosOrdenados = ordenarGeograficamente(selGastro)
-    const paradas = intercalar(culturalesOrdenados, gastrosOrdenados)
+    const paradas = intercalar(culturalesOrdenados, gastrosOrdenados, barrioStop)
 
-    // Distancia total aproximada (km, factored)
+    // Distancia total aproximada (km)
     let distTotal = 0
     for (let i = 1; i < paradas.length; i++) {
       distTotal += distancia(paradas[i - 1], paradas[i]) * 111
