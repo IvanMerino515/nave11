@@ -105,7 +105,19 @@ async function main() {
   // Filtrar páginas archivadas/eliminadas
   const active = pages.filter(p => !p.archived && !p.in_trash)
 
-  const merged = active.map(page => {
+  // Deduplicar por nombre (primera aparición gana)
+  const seenNames = new Set()
+  const deduped = active.filter(page => {
+    const nombre = page.properties['Nombre']?.title?.map(t => t.plain_text).join('').trim().toLowerCase() || ''
+    if (seenNames.has(nombre)) {
+      console.warn(`  ⚠️  Duplicado ignorado: "${page.properties['Nombre']?.title?.map(t => t.plain_text).join('').trim()}" (elimínalo en Notion)`)
+      return false
+    }
+    seenNames.add(nombre)
+    return true
+  })
+
+  const merged = deduped.map(page => {
     const nombre = page.properties['Nombre']?.title?.map(t => t.plain_text).join('').trim() || ''
     const existing = existingByNombre[nombre.toLowerCase()] ?? null
     return mapPage(page, existing)
