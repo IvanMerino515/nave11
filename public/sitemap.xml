@@ -349,12 +349,6 @@
     <lastmod>2026-03-21</lastmod>
   </url>
   <url>
-    <loc>https://nave11.es/espacio/casabanchel</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2026-03-21</lastmod>
-  </url>
-  <url>
     <loc>https://nave11.es/espacio/eystudio</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -379,12 +373,6 @@
     <lastmod>2026-03-21</lastmod>
   </url>
   <url>
-    <loc>https://nave11.es/espacio/factoria-jarana</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2026-03-21</lastmod>
-  </url>
-  <url>
     <loc>https://nave11.es/espacio/observatorio-musical</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -392,6 +380,18 @@
   </url>
   <url>
     <loc>https://nave11.es/espacio/obrador-panorama</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-03-21</lastmod>
+  </url>
+  <url>
+    <loc>https://nave11.es/espacio/factoria-jarana</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-03-21</lastmod>
+  </url>
+  <url>
+    <loc>https://nave11.es/espacio/casabanchel</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <lastmod>2026-03-21</lastmod>

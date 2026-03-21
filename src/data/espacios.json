@@ -2011,42 +2011,6 @@
     "destacado": false
   },
   {
-    "id": 21,
-    "nombre": "Casabanchel",
-    "categoria": "nave",
-    "tipo_hosteleria": null,
-    "direccion": "C. Santiago Estévez, 26",
-    "lat": 40.3919607,
-    "lng": -3.7345365,
-    "descripcion": "Espacio cultural con eventos de música electrónica y proyectos artísticos.",
-    "descripcion_larga": null,
-    "tags": [
-      "Música",
-      "Arte digital",
-      "Eventos"
-    ],
-    "horarios": {
-      "lu": null,
-      "ma": null,
-      "mi": null,
-      "ju": null,
-      "vi": null,
-      "sa": null,
-      "do": null
-    },
-    "telefono": null,
-    "num_reviews": 65,
-    "apto_ninos": false,
-    "evento_actual": null,
-    "web": null,
-    "instagram": null,
-    "rating": 4.7,
-    "fundado_en": null,
-    "entrada_libre": true,
-    "abre_sabados": false,
-    "destacado": false
-  },
-  {
     "id": 25,
     "nombre": "Ey!Studio",
     "categoria": "estudio",
@@ -2190,43 +2154,6 @@
     "destacado": false
   },
   {
-    "id": 20,
-    "nombre": "Factoría Jarana",
-    "categoria": "nave",
-    "tipo_hosteleria": null,
-    "direccion": "Pl. Inmaculada Concepción, 4",
-    "lat": 40.393171,
-    "lng": -3.7123302,
-    "descripcion": "Espacio multidisciplinar en Comillas. Ensayos, radio, teatro y cocreación. Muy arraigado en el barrio.",
-    "descripcion_larga": null,
-    "tags": [
-      "Teatro",
-      "Música",
-      "Talleres",
-      "Colectivo"
-    ],
-    "horarios": {
-      "lu": null,
-      "ma": null,
-      "mi": null,
-      "ju": null,
-      "vi": null,
-      "sa": null,
-      "do": null
-    },
-    "telefono": "+34 689 13 73 59",
-    "num_reviews": 62,
-    "apto_ninos": true,
-    "evento_actual": null,
-    "web": null,
-    "instagram": null,
-    "rating": 4.9,
-    "fundado_en": null,
-    "entrada_libre": true,
-    "abre_sabados": false,
-    "destacado": true
-  },
-  {
     "id": 31,
     "nombre": "Observatorio Musical",
     "categoria": "sala",
@@ -2296,5 +2223,78 @@
     "entrada_libre": true,
     "abre_sabados": true,
     "destacado": true
+  },
+  {
+    "id": 20,
+    "nombre": "Factoría Jarana",
+    "categoria": "nave",
+    "tipo_hosteleria": null,
+    "direccion": "Pl. Inmaculada Concepción, 4",
+    "lat": 40.393171,
+    "lng": -3.7123302,
+    "descripcion": "Espacio multidisciplinar en Comillas. Ensayos, radio, teatro y cocreación. Muy arraigado en el barrio.",
+    "descripcion_larga": null,
+    "tags": [
+      "Teatro",
+      "Música",
+      "Talleres",
+      "Colectivo"
+    ],
+    "horarios": {
+      "lu": null,
+      "ma": null,
+      "mi": null,
+      "ju": null,
+      "vi": null,
+      "sa": null,
+      "do": null
+    },
+    "telefono": "+34 689 13 73 59",
+    "num_reviews": 62,
+    "apto_ninos": true,
+    "evento_actual": null,
+    "web": null,
+    "instagram": null,
+    "rating": 4.9,
+    "fundado_en": null,
+    "entrada_libre": true,
+    "abre_sabados": false,
+    "destacado": true
+  },
+  {
+    "id": 21,
+    "nombre": "Casabanchel",
+    "categoria": "nave",
+    "tipo_hosteleria": null,
+    "direccion": "C. Santiago Estévez, 26",
+    "lat": 40.3919607,
+    "lng": -3.7345365,
+    "descripcion": "Espacio cultural con eventos de música electrónica y proyectos artísticos.",
+    "descripcion_larga": null,
+    "tags": [
+      "Música",
+      "Arte digital",
+      "Eventos"
+    ],
+    "horarios": {
+      "lu": null,
+      "ma": null,
+      "mi": null,
+      "ju": null,
+      "vi": null,
+      "sa": null,
+      "do": null
+    },
+    "telefono": null,
+    "num_reviews": 65,
+    "apto_ninos": false,
+    "evento_actual": null,
+    "web": null,
+    "instagram": null,
+    "rating": 4.7,
+    "fundado_en": null,
+    "entrada_libre": true,
+    "abre_sabados": false,
+    "destacado": false
   }
 ]
