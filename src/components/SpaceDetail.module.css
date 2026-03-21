@@ -237,3 +237,18 @@
 .contactIcon {
   font-size: 0.9rem;
 }
+
+.fichaLink {
+  display: inline-block;
+  margin-top: var(--space-3);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: 0.03em;
+  font-family: var(--font-body);
+  transition: opacity 0.15s;
+}
+
+.fichaLink:hover {
+  opacity: 0.65;
+}

@@ -1,0 +1,35 @@
+# Nave11 — nave11.es
+# Directorio cultural del Distrito 11 de Carabanchel, Madrid
+
+User-agent: *
+Allow: /
+
+# AI search engines — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+Sitemap: https://nave11.es/sitemap.xml
