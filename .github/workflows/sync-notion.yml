@@ -1,0 +1,42 @@
+name: Sync espacios desde Notion
+
+on:
+  workflow_dispatch:
+    inputs:
+      mensaje:
+        description: "Mensaje del commit (opcional)"
+        required: false
+        default: "sync: actualizar espacios desde Notion"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch espacios desde Notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: node scripts/fetch-from-notion.js
+
+      - name: Regenerar sitemap
+        run: node scripts/generate-sitemap.js
+
+      - name: Commit y push si hay cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/espacios.json public/sitemap.xml
+          if git diff --staged --quiet; then
+            echo "Sin cambios — nada que commitear"
+          else
+            git commit -m "${{ github.event.inputs.mensaje }}"
+            git push
+          fi
