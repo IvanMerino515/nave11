@@ -2011,6 +2011,38 @@
     "destacado": false
   },
   {
+    "id": 65,
+    "nombre": "Toledano",
+    "categoria": "hosteleria",
+    "tipo_hosteleria": "cerveza",
+    "direccion": "Jacinto Verdaguer 2",
+    "lat": null,
+    "lng": null,
+    "descripcion": null,
+    "descripcion_larga": null,
+    "tags": [],
+    "horarios": {
+      "lu": null,
+      "ma": null,
+      "mi": null,
+      "ju": null,
+      "vi": null,
+      "sa": null,
+      "do": null
+    },
+    "telefono": null,
+    "num_reviews": null,
+    "apto_ninos": false,
+    "evento_actual": null,
+    "web": null,
+    "instagram": null,
+    "rating": null,
+    "fundado_en": null,
+    "entrada_libre": false,
+    "abre_sabados": false,
+    "destacado": true
+  },
+  {
     "id": 25,
     "nombre": "Ey!Studio",
     "categoria": "estudio",
