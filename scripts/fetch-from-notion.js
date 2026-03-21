@@ -52,32 +52,42 @@ function getSelect(prop) {
   return prop?.select?.name || null
 }
 
+function getMultiSelect(prop) {
+  return prop?.multi_select?.map(o => o.name) ?? null
+}
+
 function mapPage(page, existing) {
   const p = page.properties
 
   const nombre = p['Nombre']?.title?.map(t => t.plain_text).join('').trim() || ''
 
+  const horarioNotion = {
+    lu: getText(p['Lu']) || null,
+    ma: getText(p['Ma']) || null,
+    mi: getText(p['Mi']) || null,
+    ju: getText(p['Ju']) || null,
+    vi: getText(p['Vi']) || null,
+    sa: getText(p['Sa']) || null,
+    do: getText(p['Do']) || null,
+  }
+  const hasHorarioNotion = Object.values(horarioNotion).some(v => v !== null)
+
   return {
-    // ID: conservar el existente, si no hay asignamos después
     id: existing?.id ?? null,
     nombre,
     categoria: getSelect(p['Categoría']) ?? existing?.categoria ?? null,
     tipo_hosteleria: getSelect(p['Tipo hostelería']) ?? existing?.tipo_hosteleria ?? null,
     direccion: getText(p['Dirección']) ?? existing?.direccion ?? null,
-
-    // Campos solo en JSON (preservar siempre)
-    lat: existing?.lat ?? null,
-    lng: existing?.lng ?? null,
-    descripcion: existing?.descripcion ?? null,
-    descripcion_larga: existing?.descripcion_larga ?? null,
-    tags: existing?.tags ?? [],
-    horarios: existing?.horarios ?? { lu: null, ma: null, mi: null, ju: null, vi: null, sa: null, do: null },
-    telefono: existing?.telefono ?? null,
-    num_reviews: existing?.num_reviews ?? null,
-    apto_ninos: existing?.apto_ninos ?? false,
+    lat: p['Lat']?.number ?? existing?.lat ?? null,
+    lng: p['Lng']?.number ?? existing?.lng ?? null,
+    descripcion: getText(p['Descripción']) ?? existing?.descripcion ?? null,
+    descripcion_larga: getText(p['Descripción larga']) ?? existing?.descripcion_larga ?? null,
+    tags: getMultiSelect(p['Tags']) ?? existing?.tags ?? [],
+    horarios: hasHorarioNotion ? horarioNotion : (existing?.horarios ?? { lu: null, ma: null, mi: null, ju: null, vi: null, sa: null, do: null }),
+    telefono: p['Teléfono']?.phone_number ?? existing?.telefono ?? null,
+    num_reviews: p['Num reseñas']?.number ?? existing?.num_reviews ?? null,
+    apto_ninos: p['Apto niños']?.checkbox ?? existing?.apto_ninos ?? false,
     evento_actual: existing?.evento_actual ?? null,
-
-    // Campos en Notion (Notion manda)
     web: p['Web']?.url ?? existing?.web ?? null,
     instagram: getText(p['Instagram']) ?? existing?.instagram ?? null,
     rating: p['Rating']?.number ?? existing?.rating ?? null,
