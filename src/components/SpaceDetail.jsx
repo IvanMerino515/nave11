@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './SpaceDetail.module.css'
+import { toSlug } from '../utils/slug'
 
 const DIAS = ['lu', 'ma', 'mi', 'ju', 'vi', 'sa', 'do']
 const DIAS_LABEL = { lu: 'Lun', ma: 'Mar', mi: 'Mié', ju: 'Jue', vi: 'Vie', sa: 'Sáb', do: 'Dom' }
@@ -40,7 +41,7 @@ function PanelContent({ espacio }) {
             {num_reviews && <span className={styles.reviews}>({num_reviews} reseñas)</span>}
           </p>
         )}
-        <Link to={`/espacio/${espacio.id}`} className={styles.fichaLink}>
+        <Link to={`/espacio/${toSlug(espacio.nombre)}`} className={styles.fichaLink}>
           Ver ficha completa →
         </Link>
       </div>

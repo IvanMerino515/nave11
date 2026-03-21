@@ -8,7 +8,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/planes" element={<Planes />} />
-      <Route path="/espacio/:id" element={<Espacio />} />
+      <Route path="/espacio/:slug" element={<Espacio />} />
     </Routes>
   )
 }

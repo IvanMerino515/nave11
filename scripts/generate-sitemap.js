@@ -5,6 +5,17 @@ import { dirname, join } from 'path'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..')
 
+function toSlug(name) {
+  return name
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+}
+
 const espacios = JSON.parse(readFileSync(join(ROOT, 'src/data/espacios.json'), 'utf-8'))
 const today = new Date().toISOString().split('T')[0]
 const BASE = 'https://nave11.es'
@@ -15,7 +26,7 @@ const staticPages = [
 ]
 
 const espacioPages = espacios.map(e => ({
-  loc: `/espacio/${e.id}`,
+  loc: `/espacio/${toSlug(e.nombre)}`,
   changefreq: 'monthly',
   priority: '0.7',
 }))

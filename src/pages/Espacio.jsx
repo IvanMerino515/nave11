@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import espacios from '../data/espacios.json'
+import { toSlug } from '../utils/slug'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useFilter } from '../hooks/useFilter'
@@ -44,7 +45,7 @@ function buildJsonLd(e) {
   const schema = {
     '@context': 'https://schema.org',
     '@type': type,
-    '@id': `https://nave11.es/espacio/${e.id}`,
+    '@id': `https://nave11.es/espacio/${toSlug(e.nombre)}`,
     name: e.nombre,
     description: e.descripcion_larga || e.descripcion,
     address: {
@@ -60,7 +61,7 @@ function buildJsonLd(e) {
       latitude: e.lat,
       longitude: e.lng,
     },
-    url: e.web || `https://nave11.es/espacio/${e.id}`,
+    url: e.web || `https://nave11.es/espacio/${toSlug(e.nombre)}`,
     isPartOf: {
       '@type': 'WebSite',
       name: 'Nave11',
@@ -115,7 +116,7 @@ function useEspacioSeo(e) {
     setMeta('description', desc)
     setMeta('og:title', title, true)
     setMeta('og:description', desc, true)
-    setMeta('og:url', `https://nave11.es/espacio/${e.id}`, true)
+    setMeta('og:url', `https://nave11.es/espacio/${toSlug(e.nombre)}`, true)
     setMeta('og:type', 'place', true)
     setMeta('twitter:title', title, true)
     setMeta('twitter:description', desc, true)
@@ -138,9 +139,9 @@ function useEspacioSeo(e) {
 }
 
 export default function Espacio() {
-  const { id } = useParams()
+  const { slug } = useParams()
   const navigate = useNavigate()
-  const espacio = espacios.find(e => e.id === Number(id))
+  const espacio = espacios.find(e => toSlug(e.nombre) === slug)
 
   // filtros vaciós solo para pasar al Header (no filtra nada en esta página)
   const filtros = useFilter(espacios)
@@ -325,7 +326,7 @@ export default function Espacio() {
             </h2>
             <div className={styles.relacionadosList}>
               {relacionados.map(r => (
-                <Link key={r.id} to={`/espacio/${r.id}`} className={styles.relacionadoItem}>
+                <Link key={r.id} to={`/espacio/${toSlug(r.nombre)}`} className={styles.relacionadoItem}>
                   <span className={styles.relacionadoNombre}>{r.nombre}</span>
                   <span className={styles.relacionadoDir}>{r.direccion}</span>
                   {r.rating && (
