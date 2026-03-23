@@ -45,7 +45,7 @@ function buildJsonLd(e) {
   const schema = {
     '@context': 'https://schema.org',
     '@type': type,
-    '@id': `https://nave11.es/espacio/${toSlug(e.nombre)}`,
+    '@id': `https://nave11.app/espacio/${toSlug(e.nombre)}`,
     name: e.nombre,
     description: e.descripcion_larga || e.descripcion,
     address: {
@@ -61,11 +61,11 @@ function buildJsonLd(e) {
       latitude: e.lat,
       longitude: e.lng,
     },
-    url: e.web || `https://nave11.es/espacio/${toSlug(e.nombre)}`,
+    url: e.web || `https://nave11.app/espacio/${toSlug(e.nombre)}`,
     isPartOf: {
       '@type': 'WebSite',
       name: 'Nave11',
-      url: 'https://nave11.es',
+      url: 'https://nave11.app',
     },
   }
   if (e.telefono) schema.telephone = e.telefono
@@ -116,7 +116,7 @@ function useEspacioSeo(e) {
     setMeta('description', desc)
     setMeta('og:title', title, true)
     setMeta('og:description', desc, true)
-    setMeta('og:url', `https://nave11.es/espacio/${toSlug(e.nombre)}`, true)
+    setMeta('og:url', `https://nave11.app/espacio/${toSlug(e.nombre)}`, true)
     setMeta('og:type', 'place', true)
     setMeta('twitter:title', title, true)
     setMeta('twitter:description', desc, true)

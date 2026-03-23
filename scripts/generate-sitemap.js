@@ -18,7 +18,7 @@ function toSlug(name) {
 
 const espacios = JSON.parse(readFileSync(join(ROOT, 'src/data/espacios.json'), 'utf-8'))
 const today = new Date().toISOString().split('T')[0]
-const BASE = 'https://nave11.es'
+const BASE = 'https://nave11.app'
 
 const staticPages = [
   { loc: '/',       changefreq: 'weekly',  priority: '1.0' },

@@ -1,4 +1,4 @@
-# Nave11 — nave11.es
+# Nave11 — nave11.app
 # Directorio cultural del Distrito 11 de Carabanchel, Madrid
 
 User-agent: *
@@ -32,4 +32,4 @@ Allow: /
 User-agent: Applebot
 Allow: /
 
-Sitemap: https://nave11.es/sitemap.xml
+Sitemap: https://nave11.app/sitemap.xml

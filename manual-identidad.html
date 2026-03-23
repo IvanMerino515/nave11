@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nave11 — Manual de Identidad de Marca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #bfbfbf;
+      --bg-dark:   #1a1a1a;
+      --bg-mid:    #2d2d2d;
+      --accent:    #e3f261;
+      --white:     #f5f5f5;
+      --text:      #2d2d2d;
+      --muted:     #555;
+      --border:    #2d2d2d;
+      --font:      'Rajdhani', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* ── UTILIDADES ── */
+    .label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    /* ── PÁGINAS ── */
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      padding: 64px 80px;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 2px solid var(--border);
+      position: relative;
+    }
+
+    .page-num {
+      position: absolute;
+      bottom: 32px;
+      right: 80px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.4;
+    }
+
+    /* ════════════════════════════════════════
+       1. PORTADA
+    ════════════════════════════════════════ */
+    .cover {
+      background: var(--bg-dark);
+      color: var(--white);
+      justify-content: space-between;
+      min-height: 100vh;
+    }
+
+    .cover-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .cover-brand {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .cover-year {
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .cover-center {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      align-self: center;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .cover-logo-area {
+      margin-bottom: 40px;
+    }
+
+    .cover-logotype {
+      font-size: clamp(6rem, 14vw, 11rem);
+      font-weight: 700;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+
+    .cover-accent-line {
+      width: 120px;
+      height: 6px;
+      background: var(--accent);
+      margin: 28px 0;
+    }
+
+    .cover-title {
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .cover-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 24px;
+    }
+
+    .cover-sub {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.06em;
+    }
+
+    .cover-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--bg-dark);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+    }
+
+    /* ════════════════════════════════════════
+       2. ÍNDICE
+    ════════════════════════════════════════ */
+    .index-page {
+      background: var(--bg);
+    }
+
+    .section-header {
+      margin-bottom: 48px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: var(--text);
+      padding: 4px 8px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+
+    .index-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .index-item {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .index-item:nth-child(odd) {
+      border-right: 1px solid var(--border);
+      padding-right: 40px;
+    }
+
+    .index-item:nth-child(even) {
+      padding-left: 40px;
+    }
+
+    .index-num {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      flex-shrink: 0;
+      width: 24px;
+    }
+
+    .index-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .index-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 2px;
+      font-weight: 400;
+    }
+
+    /* ════════════════════════════════════════
+       3. ORIGEN Y PROPÓSITO
+    ════════════════════════════════════════ */
+    .dark-page {
+      background: var(--bg-dark);
+      color: var(--white);
+    }
+
+    .dark-page .section-title { color: var(--white); }
+    .dark-page .section-tag { background: var(--accent); color: var(--bg-dark); }
+
+    .manifesto {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 24px;
+      flex: 1;
+    }
+
+    .manifesto-left {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .manifesto-quote {
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--white);
+    }
+
+    .manifesto-quote em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .manifesto-right {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      padding-top: 8px;
+    }
+
+    .manifesto-block {}
+
+    .manifesto-block-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .manifesto-block-text {
+      font-size: 0.92rem;
+      font-weight: 400;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.72);
+    }
+
+    /* ════════════════════════════════════════
+       4. FILOSOFÍA
+    ════════════════════════════════════════ */
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      flex: 1;
+    }
+
+    .phil-col {
+      padding: 32px 0;
+    }
+
+    .phil-col:first-child {
+      padding-right: 60px;
+      border-right: 1px solid var(--border);
+    }
+
+    .phil-col:last-child {
+      padding-left: 60px;
+    }
+
+    .phil-col-title {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .phil-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .phil-marker {
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .phil-marker.no { color: #cc3333; }
+    .phil-marker.yes { color: #2d8a2d; }
+
+    .phil-text {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .personality {
+      margin-top: 40px;
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border);
+    }
+
+    .personality-word {
+      flex: 1;
+      padding: 28px 32px;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .personality-word:last-child { border-right: none; }
+
+    .personality-word-main {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .personality-word-desc {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    /* ════════════════════════════════════════
+       5. TAGLINES
+    ════════════════════════════════════════ */
+    .tagline-page {
+      background: var(--accent);
+    }
+
+    .tagline-page .section-title { color: var(--text); }
+    .tagline-page .section-tag { background: var(--text); color: var(--accent); }
+    .tagline-page .page-num { opacity: 0.5; color: var(--text); }
+
+    .taglines-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 2px solid var(--text);
+      margin-top: 40px;
+      flex: 1;
+    }
+
+    .tagline-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      padding: 32px 0;
+      border-bottom: 1px solid rgba(45,45,45,0.25);
+      align-items: start;
+    }
+
+    .tagline-type {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text);
+      opacity: 0.55;
+      padding-top: 4px;
+    }
+
+    .tagline-main-text {
+      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text);
+    }
+
+    .tagline-secondary-text {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      font-weight: 500;
+      line-height: 1.35;
+      color: var(--text);
+    }
+
+    .tagline-small-text {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .tagline-why {
+      font-size: 0.78rem;
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--text);
+      opacity: 0.65;
+      margin-top: 8px;
+    }
+
+    /* ════════════════════════════════════════
+       6. TONO DE VOZ
+    ════════════════════════════════════════ */
+    .tone-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 40px;
+      flex: 1;
+    }
+
+    .tone-example {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .tone-label-col {
+      padding: 20px 20px 20px 0;
+      border-right: 1px solid var(--border);
+    }
+
+    .tone-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .tone-label.avoid { color: #c0392b; }
+    .tone-label.correct { color: #27ae60; }
+
+    .tone-text-col {
+      padding: 20px 0 20px 32px;
+    }
+
+    .tone-text {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .tone-text.avoid { opacity: 0.45; text-decoration-color: rgba(192,57,43,0.4); }
+
+    .tone-context {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .tone-principles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      margin-top: 32px;
+    }
+
+    .tone-principle {
+      padding: 24px;
+      border-right: 1px solid var(--border);
+    }
+
+    .tone-principle:last-child { border-right: none; }
+
+    .tone-principle-title {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
+    .tone-principle-text {
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    /* ════════════════════════════════════════
+       7. SISTEMA DE LOGO
+    ════════════════════════════════════════ */
+    .logo-page {
+      background: var(--bg);
+    }
+
+    .logo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      margin-top: 40px;
+      flex: 1;
+    }
+
+    .logo-variant {
+      padding: 48px 40px 32px;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      min-height: 280px;
+    }
+
+    .logo-variant:last-child { border-right: none; }
+
+    .logo-variant-img-area {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .logo-variant-img-area img {
+      height: 48px;
+      width: auto;
+    }
+
+    .logo-variant-bg-dark { background: #1a1a1a; }
+    .logo-variant-bg-accent { background: var(--accent); }
+    .logo-variant-bg-gray { background: var(--bg); }
+
+    .logo-variant-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .logo-variant-bg-gray .logo-variant-label,
+    .logo-variant-bg-accent .logo-variant-label {
+      color: rgba(45,45,45,0.5);
+    }
+
+    .logo-variant-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .logo-variant-bg-dark .logo-variant-name { color: var(--white); }
+
+    .logo-rules {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-top: none;
+      margin-bottom: 24px;
+    }
+
+    .logo-rule {
+      padding: 16px 24px;
+      border-right: 1px solid var(--border);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .logo-rule:last-child { border-right: none; }
+
+    .logo-rule-title {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    /* Isotipo grid */
+    .isotipo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-top: none;
+    }
+
+    .isotipo-variant {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border-right: 1px solid var(--border);
+    }
+
+    .isotipo-variant:last-child { border-right: none; }
+
+    .isotipo-img-area {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .isotipo-img-area img {
+      height: 56px;
+      width: auto;
+    }
+
+    /* ════════════════════════════════════════
+       8. PALETA DE COLOR
+    ════════════════════════════════════════ */
+    .color-page { background: var(--bg); }
+
+    .color-swatches {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+    }
+
+    .swatch:last-child { border-right: none; }
+
+    .swatch-color {
+      height: 160px;
+    }
+
+    .swatch-info {
+      padding: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .swatch-name {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .swatch-hex {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--muted);
+      font-family: monospace;
+    }
+
+    .swatch-role {
+      font-size: 0.65rem;
+      color: var(--muted);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    .color-usage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-top: none;
+      margin-bottom: 40px;
+    }
+
+    .color-usage-block {
+      padding: 24px 32px;
+      border-right: 1px solid var(--border);
+    }
+
+    .color-usage-block:last-child { border-right: none; }
+
+    .color-usage-title {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .color-usage-text {
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+
+    /* ════════════════════════════════════════
+       9. TIPOGRAFÍA
+    ════════════════════════════════════════ */
+    .type-page { background: var(--bg); }
+
+    .type-showcase {
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      flex: 1;
+    }
+
+    .type-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .type-meta {
+      padding-top: 6px;
+    }
+
+    .type-meta-name {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .type-meta-spec {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    .type-sample { line-height: 1.1; }
+
+    .type-scale {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      margin-top: 32px;
+    }
+
+    .type-scale-item {
+      padding: 20px 24px;
+      border-right: 1px solid var(--border);
+    }
+
+    .type-scale-item:last-child { border-right: none; }
+
+    .type-scale-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .type-scale-sample { line-height: 1.1; font-family: var(--font); }
+
+    /* ════════════════════════════════════════
+       10. CATEGORÍAS
+    ════════════════════════════════════════ */
+    .cat-page { background: var(--bg-dark); color: var(--white); }
+    .cat-page .section-title { color: var(--white); }
+
+    .cat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      border: 1px solid rgba(255,255,255,0.1);
+      margin-top: 40px;
+      flex: 1;
+    }
+
+    .cat-item {
+      padding: 20px 24px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .cat-item:nth-child(3n) { border-right: none; }
+    .cat-item:nth-last-child(-n+3) { border-bottom: none; }
+
+    .cat-tag {
+      display: inline-block;
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      margin-bottom: 8px;
+    }
+
+    .cat-tag.cultura { background: var(--accent); color: var(--bg-dark); }
+    .cat-tag.gastro  { background: #c47c3e; color: var(--white); }
+    .cat-tag.barrio  { background: #5b8a5b; color: var(--white); }
+
+    .cat-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+      color: var(--white);
+    }
+
+    .cat-desc {
+      font-size: 0.75rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* ════════════════════════════════════════
+       11. MICROCOPY
+    ════════════════════════════════════════ */
+    .micro-page { background: var(--bg); }
+
+    .micro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      margin-top: 40px;
+      flex: 1;
+    }
+
+    .micro-section {
+      padding: 28px 32px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .micro-section:nth-child(2n) { border-right: none; }
+
+    .micro-section-title {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .micro-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 10px;
+      align-items: flex-start;
+    }
+
+    .micro-key {
+      font-size: 0.72rem;
+      color: var(--muted);
+      flex-shrink: 0;
+      width: 120px;
+      padding-top: 1px;
+    }
+
+    .micro-val {
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: monospace;
+      background: rgba(0,0,0,0.06);
+      padding: 2px 6px;
+      border-radius: 2px;
+    }
+
+    /* ════════════════════════════════════════
+       12. CIERRE
+    ════════════════════════════════════════ */
+    .closing-page {
+      background: var(--bg-dark);
+      color: var(--white);
+      justify-content: space-between;
+      min-height: 100vh;
+    }
+
+    .closing-top {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .closing-center {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .closing-tagline {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--white);
+    }
+
+    .closing-tagline em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .closing-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .closing-meta-item {
+      padding: 20px 28px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .closing-meta-item:last-child { border-right: none; }
+
+    .closing-meta-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 6px;
+    }
+
+    .closing-meta-val {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .closing-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+    }
+
+    .closing-copy {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .page { padding: 40px 32px; }
+      .manifesto,
+      .philosophy-grid,
+      .logo-grid,
+      .color-swatches,
+      .cat-grid { grid-template-columns: 1fr; }
+      .index-grid { grid-template-columns: 1fr; }
+      .index-item:nth-child(odd) { border-right: none; padding-right: 0; }
+      .index-item:nth-child(even) { padding-left: 0; }
+      .type-scale { grid-template-columns: 1fr 1fr; }
+      .micro-grid { grid-template-columns: 1fr; }
+      .closing-meta { grid-template-columns: 1fr; }
+      .tagline-row { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      .page { break-after: page; min-height: 0; padding: 48px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     PORTADA
+═══════════════════════════════════════════════════ -->
+<section class="page cover">
+  <div class="cover-top">
+    <span class="cover-brand">Nave11 · Carabanchel, Madrid</span>
+    <span class="cover-year">2026</span>
+  </div>
+
+  <div class="cover-center">
+    <div class="cover-logo-area">
+      <div class="cover-logotype">NAVE11</div>
+    </div>
+    <div class="cover-accent-line"></div>
+    <div class="cover-title">Manual de Identidad de Marca</div>
+  </div>
+
+  <div class="cover-bottom">
+    <span class="cover-sub">Comunicación · Filosofía · Branding · Identidad Visual</span>
+    <span class="cover-tag">Uso interno</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     ÍNDICE
+═══════════════════════════════════════════════════ -->
+<section class="page index-page">
+  <div class="section-header">
+    <span class="section-tag">Índice</span>
+    <h2 class="section-title">Contenidos</h2>
+  </div>
+
+  <div class="index-grid">
+    <div class="index-item">
+      <span class="index-num">01</span>
+      <div>
+        <div class="index-name">Origen y Propósito</div>
+        <div class="index-sub">Por qué existe Nave11</div>
+      </div>
+    </div>
+    <div class="index-item">
+      <span class="index-num">02</span>
+      <div>
+        <div class="index-name">Filosofía de Marca</div>
+        <div class="index-sub">Posicionamiento y personalidad</div>
+      </div>
+    </div>
+    <div class="index-item">
+      <span class="index-num">03</span>
+      <div>
+        <div class="index-name">Taglines y Mensajes</div>
+        <div class="index-sub">Jerarquía de comunicación</div>
+      </div>
+    </div>
+    <div class="index-item">
+      <span class="index-num">04</span>
+      <div>
+        <div class="index-name">Tono de Voz</div>
+        <div class="index-sub">Cómo habla la marca</div>
+      </div>
+    </div>
+    <div class="index-item">
+      <span class="index-num">05</span>
+      <div>
+        <div class="index-name">Sistema de Logo</div>
+        <div class="index-sub">Variantes y uso correcto</div>
+      </div>
+    </div>
+    <div class="index-item">
+      <span class="index-num">06</span>
+      <div>
+        <div class="index-name">Paleta de Color</div>
+        <div class="index-sub">Colores y aplicación</div>
+      </div>
+    </div>
+    <div class="index-item">
+      <span class="index-num">07</span>
+      <div>
+        <div class="index-name">Tipografía</div>
+        <div class="index-sub">Familia tipográfica y escala</div>
+      </div>
+    </div>
+    <div class="index-item">
+      <span class="index-num">08</span>
+      <div>
+        <div class="index-name">Categorías</div>
+        <div class="index-sub">Descripción de los 15 tipos de espacio</div>
+      </div>
+    </div>
+    <div class="index-item">
+      <span class="index-num">09</span>
+      <div>
+        <div class="index-name">Microcopy</div>
+        <div class="index-sub">Textos de interfaz y badges</div>
+      </div>
+    </div>
+    <div class="index-item">
+      <span class="index-num">10</span>
+      <div>
+        <div class="index-name">Cierre</div>
+        <div class="index-sub">Contacto y versioning</div>
+      </div>
+    </div>
+  </div>
+
+  <span class="page-num">Nave11 · Manual de Identidad · 2026</span>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     01 ORIGEN Y PROPÓSITO
+═══════════════════════════════════════════════════ -->
+<section class="page dark-page">
+  <div class="section-header">
+    <span class="section-tag">01 · Origen y Propósito</span>
+    <h2 class="section-title">Por qué existe<br>Nave11</h2>
+  </div>
+
+  <div class="manifesto">
+    <div class="manifesto-left">
+      <p class="manifesto-quote">
+        Carabanchel tiene más de <em>170 espacios culturales.</em><br>
+        Hasta ahora no había un mapa.
+      </p>
+      <div style="width: 60px; height: 4px; background: var(--accent); margin: 8px 0;"></div>
+      <p class="manifesto-quote" style="font-size: clamp(1rem, 2vw, 1.5rem); font-weight: 400; color: rgba(255,255,255,0.6);"> 
+        Uno de los ecosistemas más densos y auténticos<br>de Madrid — completamente en auge.
+      </p>
+    </div>
+
+    <div class="manifesto-right">
+      <div class="manifesto-block">
+        <div class="manifesto-block-label">El Problema</div>
+        <p class="manifesto-block-text">
+          El Ayuntamiento tiene una web institucional. Círculo Carabanchel lista solo galerías. El resto — naves, bares históricos, librerías, salas de música, comercios — no aparece en ningún sitio usable. No hay un punto de entrada claro para quien quiere conocer el barrio de verdad.
+        </p>
+      </div>
+
+      <div class="manifesto-block">
+        <div class="manifesto-block-label">La Solución</div>
+        <p class="manifesto-block-text">
+          Nave11 mapea TODO el ecosistema en un solo lugar. No solo las galerías con nombre. Los bares de toda la vida. Las librerías independientes. Las naves donde trabajan los artistas. El Carabanchel real — el de antes y el de ahora.
+        </p>
+      </div>
+
+      <div class="manifesto-block">
+        <div class="manifesto-block-label">Para Quién</div>
+        <p class="manifesto-block-text">
+          Visitantes y turistas culturales que llegan a Madrid y no saben que Carabanchel existe como destino. También vecinos del barrio que quieren descubrir lo que tienen a dos paradas de metro. Para quien quiere descubrir, no consumir.
+        </p>
+      </div>
+
+      <div class="manifesto-block">
+        <div class="manifesto-block-label">Propuesta de Valor</div>
+        <p class="manifesto-block-text" style="color: var(--accent); font-size: 1rem; font-weight: 600; line-height: 1.5;">
+          El mapa cultural, gastronómico y de barrio de Carabanchel. Todo el Distrito 11, por fin en un solo lugar.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <span class="page-num" style="color: rgba(255,255,255,0.3);">01 · Origen</span>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     02 FILOSOFÍA DE MARCA
+═══════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="section-header">
+    <span class="section-tag">02 · Filosofía de Marca</span>
+    <h2 class="section-title">Posicionamiento<br>y Personalidad</h2>
+  </div>
+
+  <div class="philosophy-grid">
+    <div class="phil-col">
+      <div class="phil-col-title">Lo que NO es Nave11</div>
+      <div class="phil-item">
+        <span class="phil-marker no">✕</span>
+        <span class="phil-text">Una guía turística oficial</span>
+      </div>
+      <div class="phil-item">
+        <span class="phil-marker no">✕</span>
+        <span class="phil-text">Un marketplace o plataforma de reservas</span>
+      </div>
+      <div class="phil-item">
+        <span class="phil-marker no">✕</span>
+        <span class="phil-text">Una web del Ayuntamiento o institución pública</span>
+      </div>
+      <div class="phil-item">
+        <span class="phil-marker no">✕</span>
+        <span class="phil-text">Solo arte contemporáneo y galerías</span>
+      </div>
+      <div class="phil-item">
+        <span class="phil-marker no">✕</span>
+        <span class="phil-text">Un proyecto que descubre Carabanchel — lo conoce</span>
+      </div>
+      <div class="phil-item">
+        <span class="phil-marker no">✕</span>
+        <span class="phil-text">Un medio con agenda editorial o patrocinadores</span>
+      </div>
+    </div>
+
+    <div class="phil-col">
+      <div class="phil-col-title">Lo que SÍ es Nave11</div>
+      <div class="phil-item">
+        <span class="phil-marker yes">✓</span>
+        <span class="phil-text">Un proyecto vecinal e independiente, sin publicidad</span>
+      </div>
+      <div class="phil-item">
+        <span class="phil-marker yes">✓</span>
+        <span class="phil-text">El mapa más completo del Distrito 11 de Madrid</span>
+      </div>
+      <div class="phil-item">
+        <span class="phil-marker yes">✓</span>
+        <span class="phil-text">Tan válido para galerías como para bares de 1967</span>
+      </div>
+      <div class="phil-item">
+        <span class="phil-marker yes">✓</span>
+        <span class="phil-text">Una herramienta para quien quiere descubrir, no consumir</span>
+      </div>
+      <div class="phil-item">
+        <span class="phil-marker yes">✓</span>
+        <span class="phil-text">El tejido histórico y el emergente, en el mismo sitio</span>
+      </div>
+      <div class="phil-item">
+        <span class="phil-marker yes">✓</span>
+        <span class="phil-text">Un proyecto gestionado desde el barrio, para el barrio</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="personality">
+    <div class="personality-word">
+      <span class="personality-word-main">Directo</span>
+      <span class="personality-word-desc">Sin rodeos. Sin eufemismos turísticos. La información que importa, al frente.</span>
+    </div>
+    <div class="personality-word">
+      <span class="personality-word-main">Auténtico</span>
+      <span class="personality-word-desc">La voz de alguien del barrio que sabe dónde está lo bueno y no tiene interés en venderte nada.</span>
+    </div>
+    <div class="personality-word">
+      <span class="personality-word-main">Completo</span>
+      <span class="personality-word-desc">Todo el ecosistema. No solo lo visible. Los 56 espacios que hacen que Carabanchel sea lo que es.</span>
+    </div>
+  </div>
+
+  <span class="page-num">02 · Filosofía</span>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     03 TAGLINES Y MENSAJES
+═══════════════════════════════════════════════════ -->
+<section class="page tagline-page">
+  <div class="section-header">
+    <span class="section-tag">03 · Taglines y Mensajes</span>
+    <h2 class="section-title">Jerarquía de<br>Comunicación</h2>
+  </div>
+
+  <div class="taglines-stack">
+
+    <div class="tagline-row">
+      <div class="tagline-type">Principal<br>Tagline de marca</div>
+      <div>
+        <div class="tagline-main-text">Carabanchel no es una tendencia.</div>
+        <p class="tagline-why">Honesto, contracultural y protege la identidad del proyecto. El barrio lleva décadas siendo lo que es. Nave11 no lo descubre — lo mapea. Esa diferencia importa.</p>
+      </div>
+    </div>
+
+    <div class="tagline-row">
+      <div class="tagline-type">Secundario<br>Hero y About</div>
+      <div>
+        <div class="tagline-secondary-text">Carabanchel no es una tendencia. Es un barrio con más de 170 espacios culturales, bares de toda la vida, librerías y naves industriales que llevan aquí mucho antes de que saliera en las guías. Nave11 es el mapa que faltaba.</div>
+      </div>
+    </div>
+
+    <div class="tagline-row">
+      <div class="tagline-type">Corto<br>Redes, firma, favicon</div>
+      <div>
+        <div class="tagline-small-text">El mapa que faltaba.</div>
+      </div>
+    </div>
+
+    <div class="tagline-row">
+      <div class="tagline-type">Propuesta<br>de valor</div>
+      <div>
+        <div class="tagline-small-text">El mapa cultural, gastronómico y de barrio de Carabanchel.<br>Todo el Distrito 11, por fin en un solo lugar.</div>
+      </div>
+    </div>
+
+    <div class="tagline-row">
+      <div class="tagline-type">CTA principal<br>Generador</div>
+      <div>
+        <div class="tagline-small-text">Hazte un plan. Dinos qué te apetece.<br>Nosotros ponemos el mapa.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <span class="page-num" style="color: rgba(45,45,45,0.45);">03 · Taglines</span>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     04 TONO DE VOZ
+═══════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="section-header">
+    <span class="section-tag">04 · Tono de Voz</span>
+    <h2 class="section-title">Cómo Habla<br>la Marca</h2>
+  </div>
+
+  <div class="tone-principles">
+    <div class="tone-principle">
+      <div class="tone-principle-title">Contracultural</div>
+      <div class="tone-principle-text">Sin pose. No somos alternativos por serlo. Lo somos porque el barrio lo es. Nunca institucional, nunca turístico.</div>
+    </div>
+    <div class="tone-principle">
+      <div class="tone-principle-title">Con profundidad</div>
+      <div class="tone-principle-text">Sabemos de qué hablamos. El bar que lleva abierto desde 1967. La nave donde ensayan las bandas. Contexto, siempre.</div>
+    </div>
+    <div class="tone-principle">
+      <div class="tone-principle-title">Sin exclamaciones</div>
+      <div class="tone-principle-text">Nunca entusiasmo forzado. "¡Descubre los rincones más creativos!" no es nuestra voz. La seguridad no necesita signos de exclamación.</div>
+    </div>
+  </div>
+
+  <div class="tone-grid">
+
+    <div class="tone-example">
+      <div class="tone-label-col">
+        <span class="tone-label avoid">✕ Evitar<br>Institucional</span>
+      </div>
+      <div class="tone-text-col">
+        <p class="tone-text avoid">"Nave11 es una plataforma digital que centraliza la oferta cultural del Distrito 11 de Carabanchel."</p>
+        <div class="tone-context">Distante · Corporativo · Vacío de significado</div>
+      </div>
+    </div>
+
+    <div class="tone-example">
+      <div class="tone-label-col">
+        <span class="tone-label avoid">✕ Evitar<br>Turístico</span>
+      </div>
+      <div class="tone-text-col">
+        <p class="tone-text avoid">"¡Descubre los rincones más creativos del colorido Carabanchel!"</p>
+        <div class="tone-context">Condescendiente · Falso · Turístico</div>
+      </div>
+    </div>
+
+    <div class="tone-example">
+      <div class="tone-label-col">
+        <span class="tone-label correct">✓ Correcto<br>Directo</span>
+      </div>
+      <div class="tone-text-col">
+        <p class="tone-text">"Carabanchel tiene 170 espacios culturales. Hasta ahora no había un mapa."</p>
+        <div class="tone-context">Claro · Honesto · Seguro</div>
+      </div>
+    </div>
+
+    <div class="tone-example">
+      <div class="tone-label-col">
+        <span class="tone-label correct">✓ Correcto<br>Con profundidad</span>
+      </div>
+      <div class="tone-text-col">
+        <p class="tone-text">"No es solo galerías. Es donde trabajan los artistas, donde llevan desde 1967 sirviendo minutejos, donde ensayan las bandas que luego tocan en la Gruta 77."</p>
+        <div class="tone-context">Con contexto · Específico · Real</div>
+      </div>
+    </div>
+
+    <div class="tone-example">
+      <div class="tone-label-col">
+        <span class="tone-label correct">✓ Correcto<br>Lo histórico</span>
+      </div>
+      <div class="tone-text-col">
+        <p class="tone-text">"Estos sitios estaban antes del boom. Seguirán cuando acabe."</p>
+        <div class="tone-context">Contracultural · Con posición · Honesto</div>
+      </div>
+    </div>
+
+  </div>
+
+  <span class="page-num">04 · Tono de Voz</span>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     05 SISTEMA DE LOGO
+═══════════════════════════════════════════════════ -->
+<section class="page logo-page">
+  <div class="section-header">
+    <span class="section-tag">05 · Sistema de Logo</span>
+    <h2 class="section-title">Logotipo<br>e Isotipo</h2>
+  </div>
+
+  <!-- Logotipo — variantes -->
+  <div class="logo-grid" style="margin-bottom: 0;">
+
+    <div class="logo-variant logo-variant-bg-dark">
+      <div class="logo-variant-img-area">
+        <img src="src/images/nave11_logo_white.png" alt="Logo Nave11 blanco" />
+      </div>
+      <div class="logo-variant-label">Uso principal</div>
+      <div class="logo-variant-name">Blanco · sobre oscuro</div>
+    </div>
+
+    <div class="logo-variant logo-variant-bg-gray">
+      <div class="logo-variant-img-area">
+        <img src="src/images/nave11_logo_black.png" alt="Logo Nave11 negro" />
+      </div>
+      <div class="logo-variant-label">Uso secundario</div>
+      <div class="logo-variant-name" style="color: var(--text);">Negro · sobre claro</div>
+    </div>
+
+    <div class="logo-variant logo-variant-bg-accent">
+      <div class="logo-variant-img-area">
+        <img src="src/images/nave11_logo_black.png" alt="Logo Nave11 sobre acento" />
+      </div>
+      <div class="logo-variant-label">Uso especial</div>
+      <div class="logo-variant-name">Negro · sobre acento</div>
+    </div>
+
+  </div>
+
+  <div class="logo-rules">
+    <div class="logo-rule">
+      <div class="logo-rule-title">Espacio mínimo</div>
+      La altura de la letra N define el espacio de protección en todos los lados. No colocar nada en esa área.
+    </div>
+    <div class="logo-rule">
+      <div class="logo-rule-title">Tamaño mínimo digital</div>
+      Logotipo completo: 80px de ancho mínimo.<br>Isotipo en solitario: 24px.
+    </div>
+    <div class="logo-rule">
+      <div class="logo-rule-title">Prohibido</div>
+      No rotar. No deformar. No añadir sombras. No usar sobre fondos que no sean los tres aprobados.
+    </div>
+  </div>
+
+  <!-- Isotipo -->
+  <div style="margin-top: 32px;">
+    <span class="section-tag" style="margin-bottom: 16px; display: inline-block;">Isotipo — Uso en reducción</span>
+  </div>
+
+  <div class="isotipo-grid">
+    <div class="isotipo-variant" style="background: #1a1a1a;">
+      <div class="isotipo-img-area">
+        <img src="src/images/isotipo_white.png" alt="Isotipo blanco" />
+      </div>
+      <div class="logo-variant-label" style="color: rgba(255,255,255,0.4);">Blanco</div>
+    </div>
+    <div class="isotipo-variant" style="background: var(--bg);">
+      <div class="isotipo-img-area">
+        <img src="src/images/isotipo_black.png" alt="Isotipo negro" />
+      </div>
+      <div class="logo-variant-label" style="color: rgba(45,45,45,0.5);">Negro</div>
+    </div>
+    <div class="isotipo-variant" style="background: var(--accent);">
+      <div class="isotipo-img-area">
+        <img src="src/images/isotipo_yellow.png" alt="Isotipo amarillo" />
+      </div>
+      <div class="logo-variant-label" style="color: rgba(45,45,45,0.5);">Acento</div>
+    </div>
+  </div>
+
+  <span class="page-num">05 · Logo</span>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     06 PALETA DE COLOR
+═══════════════════════════════════════════════════ -->
+<section class="page color-page">
+  <div class="section-header">
+    <span class="section-tag">06 · Paleta de Color</span>
+    <h2 class="section-title">Sistema<br>Cromático</h2>
+  </div>
+
+  <div class="color-swatches">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a1a1a;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Fondo oscuro</div>
+        <div class="swatch-hex">#1A1A1A</div>
+        <div class="swatch-role">Fondos nocturnos, portada, mapa Leaflet</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2d2d2d;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Texto / Borde</div>
+        <div class="swatch-hex">#2D2D2D</div>
+        <div class="swatch-role">Texto principal, bordes, nav sobre acento</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #bfbfbf; border-top: 1px solid #aaa;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Fondo gris</div>
+        <div class="swatch-hex">#BFBFBF</div>
+        <div class="swatch-role">Background principal de la app</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #555555;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Texto Suave</div>
+        <div class="swatch-hex">#555555</div>
+        <div class="swatch-role">Descripciones, metadatos, labels</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e3f261;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Acento</div>
+        <div class="swatch-hex">#E3F261</div>
+        <div class="swatch-role">Nav principal, highlights, CTAs, marca</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="color-usage">
+    <div class="color-usage-block">
+      <div class="color-usage-title">Jerarquía de Uso</div>
+      <p class="color-usage-text">
+        El <strong>amarillo-verdoso (#E3F261)</strong> es el color que define la marca visualmente. Se usa en la barra de navegación, como color de fondo del nav y como acento activo en botones. Es el color que se ve a primera vista.<br><br>
+        El <strong>gris (#BFBFBF)</strong> es el fondo base de toda la interfaz. Da el tono industrial y urbano de Carabanchel.<br><br>
+        El <strong>casi-negro (#2D2D2D)</strong> es el color del texto y los bordes. No negro puro — más cálido y menos agresivo.
+      </p>
+    </div>
+    <div class="color-usage-block">
+      <div class="color-usage-title">Inspiración Cromática</div>
+      <p class="color-usage-text">
+        La paleta evita el refinamiento. Está pensada como un <strong>fanzine de barrio</strong> — fotocopiado, directo, con el contraste justo.<br><br>
+        El amarillo-verdoso es el color de las señales de obra, de los carteles de "Se alquila nave". Conecta directamente con la estética industrial de Carabanchel.<br><br>
+        El gris medio no es el gris de los bancos ni el blanco de las galerías de lujo. Es el hormigón, la pared descascarada, la fachada del Distrito 11.
+      </p>
+    </div>
+  </div>
+
+  <span class="page-num">06 · Color</span>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     07 TIPOGRAFÍA
+═══════════════════════════════════════════════════ -->
+<section class="page type-page">
+  <div class="section-header">
+    <span class="section-tag">07 · Tipografía</span>
+    <h2 class="section-title">Sistema<br>Tipográfico</h2>
+  </div>
+
+  <div class="type-showcase">
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-meta-name">Display / Títulos</div>
+        <div class="type-meta-spec">Rajdhani<br>Weight 700<br>Tracking −0.02em<br>Leading 0.9</div>
+      </div>
+      <div class="type-sample" style="font-family: var(--font); font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 700; letter-spacing: -0.02em;">
+        Carabanchel
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-meta-name">Subtítulos</div>
+        <div class="type-meta-spec">Rajdhani<br>Weight 500<br>Tracking 0em<br>Leading 1.15</div>
+      </div>
+      <div class="type-sample" style="font-family: var(--font); font-size: clamp(1.6rem, 3vw, 2.8rem); font-weight: 500;">
+        56 espacios en un mapa
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-meta-name">Cuerpo</div>
+        <div class="type-meta-spec">Rajdhani<br>Weight 400<br>Tracking 0em<br>Leading 1.7</div>
+      </div>
+      <div class="type-sample" style="font-family: var(--font); font-size: 0.9rem; font-weight: 400; line-height: 1.7; max-width: 560px;">
+        Carabanchel tiene más de 170 contenedores culturales pero no existe ninguna plataforma que los centralice junto con la oferta gastronómica, las librerías y el tejido histórico del barrio. Nave11 cubre ese hueco sin agenda institucional, sin patrocinadores.
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-meta-name">Labels / Tags</div>
+        <div class="type-meta-spec">Rajdhani<br>Weight 700<br>Uppercase<br>Tracking 0.2em</div>
+      </div>
+      <div class="type-sample" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+        <span style="font-family: var(--font); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; background: var(--accent); padding: 4px 8px;">GALERÍAS</span>
+        <span style="font-family: var(--font); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; background: var(--bg-mid); color: var(--white); padding: 4px 8px;">CASTIZO</span>
+        <span style="font-family: var(--font); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; border: 1px solid var(--border); padding: 4px 8px;">LIBRERÍAS</span>
+        <span style="font-family: var(--font); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; background: var(--accent); padding: 3px 8px;">DESDE 1967</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="type-scale">
+    <div class="type-scale-item">
+      <div class="type-scale-label">—— Font</div>
+      <div class="type-scale-sample" style="font-size: 1.2rem; font-weight: 700;">Rajdhani</div>
+    </div>
+    <div class="type-scale-item">
+      <div class="type-scale-label">—— Weights usados</div>
+      <div class="type-scale-sample" style="font-size: 0.85rem; line-height: 1.8;">
+        <span style="font-weight: 400;">400 Regular</span><br>
+        <span style="font-weight: 500;">500 Medium</span><br>
+        <span style="font-weight: 600;">600 SemiBold</span><br>
+        <span style="font-weight: 700;">700 Bold</span>
+      </div>
+    </div>
+    <div class="type-scale-item">
+      <div class="type-scale-label">—— Filosofía</div>
+      <div class="type-scale-sample" style="font-size: 0.78rem; line-height: 1.6; font-weight: 400; color: var(--muted);">
+        Una sola familia tipográfica para todo el sistema. Sin serif, sin decorativa. Brutalismo tipográfico — legible, directo, sin adornos.
+      </div>
+    </div>
+    <div class="type-scale-item">
+      <div class="type-scale-label">—— Reglas</div>
+      <div class="type-scale-sample" style="font-size: 0.78rem; line-height: 1.6; font-weight: 400; color: var(--muted);">
+        Sin cursivas en UI. Los labels siempre en mayúsculas. Nunca mezclar pesos en un mismo bloque de texto a menos que sea jerárquico.
+      </div>
+    </div>
+  </div>
+
+  <span class="page-num">07 · Tipografía</span>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     08 CATEGORÍAS
+═══════════════════════════════════════════════════ -->
+<section class="page cat-page">
+  <div class="section-header">
+    <span class="section-tag">08 · Categorías</span>
+    <h2 class="section-title">Los 56 Espacios<br>en 15 Tipos</h2>
+  </div>
+
+  <div class="cat-grid">
+
+    <div class="cat-item">
+      <span class="cat-tag cultura">Cultura</span>
+      <div class="cat-name">Galerías</div>
+      <div class="cat-desc">Arte contemporáneo. De las primeras en llegar al sur. 14 galerías que pusieron a Carabanchel en el mapa del arte.</div>
+    </div>
+
+    <div class="cat-item">
+      <span class="cat-tag cultura">Cultura</span>
+      <div class="cat-name">Naves</div>
+      <div class="cat-desc">Donde ocurre lo que no aparece en los periódicos. Espacios multidisciplinares en naves industriales reconvertidas.</div>
+    </div>
+
+    <div class="cat-item">
+      <span class="cat-tag cultura">Cultura</span>
+      <div class="cat-name">Estudios</div>
+      <div class="cat-desc">Los artistas que hacen posible el resto. Colectivos y espacios de trabajo que no siempre tienen cara pública.</div>
+    </div>
+
+    <div class="cat-item">
+      <span class="cat-tag cultura">Cultura</span>
+      <div class="cat-name">Salas</div>
+      <div class="cat-desc">Rock, teatro, ensayo. La escena que no necesita prensa. Gruta 77, Tarambana, Matilda.</div>
+    </div>
+
+    <div class="cat-item">
+      <span class="cat-tag cultura">Cultura</span>
+      <div class="cat-name">Música y Danza</div>
+      <div class="cat-desc">Dos conservatorios. El distrito con más salas de ensayo de Europa, aunque nadie lo publique.</div>
+    </div>
+
+    <div class="cat-item">
+      <span class="cat-tag cultura">Cultura</span>
+      <div class="cat-name">Arte Digital</div>
+      <div class="cat-desc">La tecnología también tiene su nave en Carabanchel. Fotografía, audiovisual, nuevos medios.</div>
+    </div>
+
+    <div class="cat-item">
+      <span class="cat-tag cultura">Cultura</span>
+      <div class="cat-name">Centros Cult.</div>
+      <div class="cat-desc">Los cinco espacios municipales del distrito. Programación pública, acceso libre, para todos.</div>
+    </div>
+
+    <div class="cat-item">
+      <span class="cat-tag gastro">Gastro</span>
+      <div class="cat-name">Vinos</div>
+      <div class="cat-desc">Naturales, de grifo, con historia. El wine bar que llegó sin hacer ruido, la bodega de toda la vida.</div>
+    </div>
+
+    <div class="cat-item">
+      <span class="cat-tag gastro">Gastro</span>
+      <div class="cat-name">Cerveza</div>
+      <div class="cat-desc">Fabricada aquí mismo. Cervezas Patanel, la fábrica artesana que revolucionó la Av. Pedro Diez.</div>
+    </div>
+
+    <div class="cat-item">
+      <span class="cat-tag gastro">Gastro</span>
+      <div class="cat-name">Café</div>
+      <div class="cat-desc">Especialidad y brunch. Los que llegaron sin ruido y se quedaron por mérito propio.</div>
+    </div>
+
+    <div class="cat-item">
+      <span class="cat-tag gastro">Gastro</span>
+      <div class="cat-name">Restaurantes</div>
+      <div class="cat-desc">Cocina creativa, vegana y de toda la vida. Desde plant-based hasta casquería madrileña pura.</div>
+    </div>
+
+    <div class="cat-item">
+      <span class="cat-tag gastro">Gastro</span>
+      <div class="cat-name">Tapas</div>
+      <div class="cat-desc">Neotabernas y las de siempre. Craft, vinos, quesos artesanos. El tapeo sin pretensiones.</div>
+    </div>
+
+    <div class="cat-item">
+      <span class="cat-tag gastro">Gastro</span>
+      <div class="cat-name">Castizo</div>
+      <div class="cat-desc">Los que estaban antes. Los que seguirán. El minutejo, la galleja, el bar que abre a las 6am.</div>
+    </div>
+
+    <div class="cat-item">
+      <span class="cat-tag barrio">Barrio</span>
+      <div class="cat-name">Librerías</div>
+      <div class="cat-desc">Independientes. Con criterio. Organizan presentaciones los jueves y llevan décadas en el barrio.</div>
+    </div>
+
+    <div class="cat-item">
+      <span class="cat-tag barrio">Barrio</span>
+      <div class="cat-name">Comercios</div>
+      <div class="cat-desc">Los que hacen que el barrio sea barrio. La boulangerie francesa al lado de la fábrica de cervezas.</div>
+    </div>
+
+  </div>
+
+  <span class="page-num" style="color: rgba(255,255,255,0.3);">08 · Categorías</span>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     09 MICROCOPY
+═══════════════════════════════════════════════════ -->
+<section class="page micro-page">
+  <div class="section-header">
+    <span class="section-tag">09 · Microcopy</span>
+    <h2 class="section-title">Textos de<br>Interfaz</h2>
+  </div>
+
+  <div class="micro-grid">
+
+    <div class="micro-section">
+      <div class="micro-section-title">Filtros y búsqueda</div>
+      <div class="micro-item">
+        <span class="micro-key">Placeholder buscador</span>
+        <span class="micro-val">Busca por nombre, tipo o disciplina...</span>
+      </div>
+      <div class="micro-item">
+        <span class="micro-key">Filtro acceso</span>
+        <span class="micro-val">Entrada libre</span>
+      </div>
+      <div class="micro-item">
+        <span class="micro-key">Filtro horario</span>
+        <span class="micro-val">Abre sábados</span>
+      </div>
+      <div class="micro-item">
+        <span class="micro-key">Filtro histórico</span>
+        <span class="micro-val">De toda la vida</span>
+      </div>
+    </div>
+
+    <div class="micro-section">
+      <div class="micro-section-title">Badges en cards</div>
+      <div class="micro-item">
+        <span class="micro-key">Evento activo</span>
+        <span class="micro-val">En cartel</span>
+      </div>
+      <div class="micro-item">
+        <span class="micro-key">Destacado</span>
+        <span class="micro-val">Imprescindible</span>
+      </div>
+      <div class="micro-item">
+        <span class="micro-key">Histórico</span>
+        <span class="micro-val">Desde [año]</span>
+      </div>
+      <div class="micro-item">
+        <span class="micro-key">Sin valoraciones</span>
+        <span class="micro-val">Sin valoraciones</span>
+      </div>
+    </div>
+
+    <div class="micro-section">
+      <div class="micro-section-title">Navegación y acciones</div>
+      <div class="micro-item">
+        <span class="micro-key">Ver localización</span>
+        <span class="micro-val">Ver en el mapa</span>
+      </div>
+      <div class="micro-item">
+        <span class="micro-key">Volver al listado</span>
+        <span class="micro-val">← Todos los espacios</span>
+      </div>
+      <div class="micro-item">
+        <span class="micro-key">Enlace web</span>
+        <span class="micro-val">Web oficial ↗</span>
+      </div>
+    </div>
+
+    <div class="micro-section">
+      <div class="micro-section-title">Estados vacíos</div>
+      <div class="micro-item">
+        <span class="micro-key">Sin horario</span>
+        <span class="micro-val">Consultar horarios</span>
+      </div>
+      <div class="micro-item">
+        <span class="micro-key">Cerrado</span>
+        <span class="micro-val">Cerrado hoy</span>
+      </div>
+      <div class="micro-item">
+        <span class="micro-key">Sin resultados</span>
+        <span class="micro-val">No hay paradas con esos filtros. Prueba con más tiempo o menos restricciones.</span>
+      </div>
+    </div>
+
+    <div class="micro-section" style="grid-column: 1 / -1; border-bottom: none;">
+      <div class="micro-section-title">Generador de Planes — Preguntas</div>
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: 1px solid var(--border); margin-top: 4px;">
+        <div style="padding: 16px; border-right: 1px solid var(--border);">
+          <div class="micro-key" style="width: auto; margin-bottom: 8px;">Pregunta 1</div>
+          <div style="font-size: 0.82rem; font-weight: 600;">¿Cuánto tiempo tienes?</div>
+          <div style="font-size: 0.7rem; color: var(--muted); margin-top: 4px; line-height: 1.5;">Un rato · Una tarde · Día completo</div>
+        </div>
+        <div style="padding: 16px; border-right: 1px solid var(--border);">
+          <div class="micro-key" style="width: auto; margin-bottom: 8px;">Pregunta 2</div>
+          <div style="font-size: 0.82rem; font-weight: 600;">¿Qué quieres ver?</div>
+          <div style="font-size: 0.7rem; color: var(--muted); margin-top: 4px; line-height: 1.5;">Galerías · Naves · Arte urbano · De todo</div>
+        </div>
+        <div style="padding: 16px; border-right: 1px solid var(--border);">
+          <div class="micro-key" style="width: auto; margin-bottom: 8px;">Pregunta 3</div>
+          <div style="font-size: 0.82rem; font-weight: 600;">¿Con quién vas?</div>
+          <div style="font-size: 0.7rem; color: var(--muted); margin-top: 4px; line-height: 1.5;">Solo/a · En pareja · Con amigos · Con niños</div>
+        </div>
+        <div style="padding: 16px; border-right: 1px solid var(--border);">
+          <div class="micro-key" style="width: auto; margin-bottom: 8px;">Pregunta 4</div>
+          <div style="font-size: 0.82rem; font-weight: 600;">¿Qué te apetece tomar?</div>
+          <div style="font-size: 0.7rem; color: var(--muted); margin-top: 4px; line-height: 1.5;">Vino · Café · Cerveza · Cualquier cosa</div>
+        </div>
+        <div style="padding: 16px;">
+          <div class="micro-key" style="width: auto; margin-bottom: 8px;">Pregunta 5 · opcional</div>
+          <div style="font-size: 0.82rem; font-weight: 600;">¿Algo más?</div>
+          <div style="font-size: 0.7rem; color: var(--muted); margin-top: 4px; line-height: 1.5;">Librería · Pan artesanal · Nada en especial</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <span class="page-num">09 · Microcopy</span>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     10 CIERRE
+═══════════════════════════════════════════════════ -->
+<section class="page closing-page">
+  <div class="closing-top">
+    <span class="cover-brand" style="color: rgba(255,255,255,0.3);">Nave11 · Manual de Identidad</span>
+    <span class="cover-year" style="color: rgba(255,255,255,0.25);">v1 · 2026</span>
+  </div>
+
+  <div class="closing-center">
+    <p class="closing-tagline">
+      Carabanchel<br>no es <em>una tendencia.</em>
+    </p>
+    <div style="width: 80px; height: 5px; background: var(--accent); margin: 8px 0;"></div>
+    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.45); max-width: 480px; line-height: 1.7; font-weight: 400;">
+      Este documento recoge los principios que hacen que Nave11 sea lo que es. No son reglas de diseño — son el carácter del proyecto. Úsalos para tomar decisiones, no solo para aplicar un estilo.
+    </p>
+  </div>
+
+  <div class="closing-meta">
+    <div class="closing-meta-item">
+      <div class="closing-meta-label">Proyecto</div>
+      <div class="closing-meta-val">Nave11 · Mapa Cultural de Carabanchel</div>
+    </div>
+    <div class="closing-meta-item">
+      <div class="closing-meta-label">Contacto</div>
+      <div class="closing-meta-val">hola@nave11.app</div>
+    </div>
+    <div class="closing-meta-item">
+      <div class="closing-meta-label">Desarrollado por</div>
+      <div class="closing-meta-val">digitaldementia.es</div>
+    </div>
+  </div>
+
+  <div class="closing-bottom">
+    <span class="closing-copy">Nave11 — Distrito 11, Carabanchel, Madrid. Proyecto independiente. Sin publicidad.</span>
+    <span class="cover-tag">Manual v1 · 2026</span>
+  </div>
+</section>
+
+</body>
+</html>

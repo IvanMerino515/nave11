@@ -14,7 +14,7 @@ export default function Footer() {
         </div>
         <div className={styles.right}>
           <p className={styles.cta}>¿Gestionas un espacio y no apareces?</p>
-          <a href="mailto:hola@nave11.es" className={styles.ctaLink}>→ Escríbenos</a>
+          <a href="mailto:hola@nave11.app" className={styles.ctaLink}>→ Escríbenos</a>
           <a href="https://digitaldementia.es" target="_blank" rel="noopener noreferrer" className={styles.firma}>
             Made in digitaldementia.es
           </a>

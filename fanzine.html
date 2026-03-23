@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nave11 — Fanzine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+
+    /*
+    ══════════════════════════════════════════════════════
+     IMPRIMIR:
+     Ctrl+P → Guardar como PDF → Papel A5 · Sin márgenes
+     Copistería: "Cuadernillo A3, doble cara, grapar, B/N"
+     Inserta QR de nave11.app en pág 7 antes de imprimir
+    ══════════════════════════════════════════════════════
+    */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --K: #000;
+      --W: #fff;
+      --font: 'Rajdhani', 'Arial Black', sans-serif;
+      --w: 148mm;
+      --h: 210mm;
+    }
+
+    html, body { background: #333; font-family: var(--font); }
+
+    .page {
+      width: var(--w);
+      height: var(--h);
+      background: var(--W);
+      color: var(--K);
+      position: relative;
+      overflow: hidden;
+      margin: 10mm auto;
+    }
+
+    /* ════════════════════════════════════════════════════
+       P1 — PORTADA
+    ════════════════════════════════════════════════════ */
+    .p1 { background: var(--K); }
+
+    .p1-logo {
+      position: absolute;
+      top: 14mm;
+      left: 12mm;
+      width: 72mm;
+    }
+
+    .p1-numero {
+      position: absolute;
+      top: -8mm;
+      right: -4mm;
+      font-size: 210pt;
+      font-weight: 700;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      user-select: none;
+    }
+
+    .p1-tagline-a {
+      position: absolute;
+      top: 52mm;
+      left: 12mm;
+      font-size: 42pt;
+      font-weight: 700;
+      line-height: 0.88;
+      letter-spacing: -0.03em;
+      color: var(--W);
+      text-transform: uppercase;
+    }
+
+    .p1-tagline-b {
+      position: absolute;
+      top: 106mm;
+      left: 12mm;
+      right: 10mm;
+      font-size: 14pt;
+      font-weight: 300;
+      line-height: 1.3;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .p1-side {
+      position: absolute;
+      right: 8mm;
+      top: 14mm;
+      writing-mode: vertical-rl;
+      font-size: 5pt;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.22);
+    }
+
+    .p1-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 24mm;
+      background: var(--W);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12mm;
+      border-top: 5pt solid var(--W);
+    }
+
+    .p1-url {
+      font-size: 16pt;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--K);
+    }
+
+    .p1-isotipo {
+      height: 14mm;
+      opacity: 0.85;
+    }
+
+    .p1-year {
+      font-size: 6pt;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.3);
+    }
+
+    /* ════════════════════════════════════════════════════
+       P2 — MANIFIESTO
+    ════════════════════════════════════════════════════ */
+    .p2 { background: var(--W); }
+
+    .p2-bg-num {
+      position: absolute;
+      top: -15mm;
+      left: -8mm;
+      font-size: 190pt;
+      font-weight: 700;
+      color: var(--K);
+      opacity: 0.06;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .p2-label {
+      position: absolute;
+      top: 9mm;
+      left: 12mm;
+      font-size: 5.5pt;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.35;
+    }
+
+    .p2-h1 {
+      position: absolute;
+      top: 16mm;
+      left: 12mm;
+      right: 10mm;
+      font-size: 34pt;
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .p2-sub {
+      position: absolute;
+      top: 76mm;
+      left: 12mm;
+      right: 10mm;
+      font-size: 9pt;
+      font-weight: 700;
+      line-height: 1.1;
+      border-top: 3pt solid var(--K);
+      padding-top: 3mm;
+    }
+
+    .p2-body {
+      position: absolute;
+      top: 95mm;
+      left: 12mm;
+      right: 10mm;
+      font-size: 7.5pt;
+      font-weight: 400;
+      line-height: 1.75;
+    }
+
+    .p2-pull-block {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--K);
+      color: var(--W);
+      padding: 5mm 12mm;
+    }
+
+    .p2-pull-text {
+      font-size: 11pt;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .p2-pull-tiny {
+      font-size: 5.5pt;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      margin-top: 2mm;
+    }
+
+    /* ════════════════════════════════════════════════════
+       P3 — LO QUE ES / NO ES
+    ════════════════════════════════════════════════════ */
+    .p3 { background: var(--W); }
+
+    /* Fondo diagonal negro */
+    .p3-bg-slash {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--K);
+      clip-path: polygon(0 0, 56% 0, 42% 100%, 0 100%);
+    }
+
+    .p3-title-left {
+      position: absolute;
+      top: 10mm;
+      left: 10mm;
+      width: 50mm;
+      font-size: 22pt;
+      font-weight: 700;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      color: var(--W);
+      text-transform: uppercase;
+    }
+
+    .p3-no-list {
+      position: absolute;
+      top: 48mm;
+      left: 10mm;
+      width: 46mm;
+    }
+
+    .p3-head {
+      font-size: 5pt;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 3mm;
+      padding-bottom: 1.5mm;
+    }
+
+    .p3-head-w { color: rgba(255,255,255,0.5); border-bottom: 1pt solid rgba(255,255,255,0.2); }
+    .p3-head-k { color: rgba(0,0,0,0.4);       border-bottom: 1pt solid rgba(0,0,0,0.15); }
+
+    .p3-li {
+      display: flex;
+      gap: 2mm;
+      margin-bottom: 2.5mm;
+      font-size: 6.5pt;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .p3-li-w { color: var(--W); }
+    .p3-li-k { color: var(--K); }
+
+    .p3-mark { flex-shrink: 0; font-weight: 700; }
+
+    .p3-yes-list {
+      position: absolute;
+      top: 30mm;
+      left: 60mm;
+      right: 8mm;
+    }
+
+    .p3-words-strip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+    }
+
+    .p3-word-block {
+      flex: 1;
+      padding: 4mm;
+      text-align: center;
+      border-top: 4pt solid var(--K);
+      border-right: 2pt solid var(--K);
+    }
+
+    .p3-word-block:last-child { border-right: none; }
+    .p3-word-block.inv-block { background: var(--K); border-top-color: var(--W); }
+
+    .p3-w-main {
+      display: block;
+      font-size: 9pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .p3-w-sub {
+      display: block;
+      font-size: 5pt;
+      opacity: 0.5;
+      margin-top: 1mm;
+      line-height: 1.4;
+    }
+
+    .p3-w-inv { color: var(--W); }
+
+    /* ════════════════════════════════════════════════════
+       P4 — CATEGORÍAS
+    ════════════════════════════════════════════════════ */
+    .p4 { background: var(--W); }
+
+    .p4-giant {
+      position: absolute;
+      top: 6mm;
+      left: -3mm;
+      font-size: 110pt;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 0.82;
+      color: var(--K);
+      opacity: 0.06;
+      user-select: none;
+    }
+
+    .p4-label {
+      position: absolute;
+      top: 9mm;
+      left: 12mm;
+      font-size: 5.5pt;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.35;
+    }
+
+    .p4-h1 {
+      position: absolute;
+      top: 16mm;
+      left: 12mm;
+      font-size: 30pt;
+      font-weight: 700;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .p4-cols {
+      position: absolute;
+      top: 50mm;
+      left: 12mm;
+      right: 10mm;
+      bottom: 8mm;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 5mm;
+    }
+
+    .p4-sec { margin-bottom: 2.5mm; }
+
+    .p4-sec-h {
+      font-size: 5.5pt;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: var(--K);
+      color: var(--W);
+      padding: 1mm 2.5mm;
+      margin-bottom: 1.5mm;
+      display: block;
+    }
+
+    .p4-item {
+      display: flex;
+      gap: 2mm;
+      margin-bottom: 1.2mm;
+      border-bottom: 0.3pt solid #ccc;
+      padding-bottom: 1.2mm;
+    }
+
+    .p4-iname {
+      font-size: 7pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      width: 22mm;
+      flex-shrink: 0;
+    }
+
+    .p4-idesc {
+      font-size: 5.8pt;
+      font-weight: 400;
+      line-height: 1.35;
+      opacity: 0.55;
+    }
+
+    /* ════════════════════════════════════════════════════
+       P5 — IMPRESCINDIBLES
+    ════════════════════════════════════════════════════ */
+    .p5 { background: var(--K); }
+
+    .p5-side-text {
+      position: absolute;
+      top: 0; bottom: 0;
+      right: 10mm;
+      writing-mode: vertical-rl;
+      font-size: 5pt;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+    }
+
+    .p5-h1 {
+      position: absolute;
+      top: 10mm;
+      left: 12mm;
+      font-size: 52pt;
+      font-weight: 700;
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      color: var(--W);
+      text-transform: uppercase;
+    }
+
+    .p5-h1 .dim { opacity: 0.18; }
+
+    .p5-list {
+      position: absolute;
+      top: 60mm;
+      left: 12mm;
+      right: 20mm;
+      bottom: 8mm;
+    }
+
+    .p5-item {
+      display: grid;
+      grid-template-columns: 7mm 1fr auto;
+      gap: 2mm;
+      padding: 2.5mm 0;
+      border-bottom: 0.5pt solid rgba(255,255,255,0.15);
+      align-items: center;
+    }
+
+    .p5-n {
+      font-size: 6pt;
+      font-weight: 700;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .p5-name {
+      font-size: 8.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--W);
+      line-height: 1.1;
+    }
+
+    .p5-addr {
+      font-size: 5.5pt;
+      color: rgba(255,255,255,0.35);
+      margin-top: 0.5mm;
+    }
+
+    .p5-tag {
+      font-size: 4.5pt;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 0.5pt solid rgba(255,255,255,0.3);
+      padding: 1mm 2mm;
+      color: rgba(255,255,255,0.5);
+      white-space: nowrap;
+      align-self: start;
+    }
+
+    .p5-logo-footer {
+      position: absolute;
+      bottom: 8mm;
+      left: 12mm;
+      height: 7mm;
+      opacity: 0.15;
+    }
+
+    /* ════════════════════════════════════════════════════
+       P6 — GENERADOR
+    ════════════════════════════════════════════════════ */
+    .p6 { background: var(--W); }
+
+    .p6-rotate {
+      position: absolute;
+      top: 28mm;
+      left: -8mm;
+      font-size: 68pt;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 0.82;
+      text-transform: uppercase;
+      color: var(--K);
+      opacity: 0.05;
+      transform: rotate(-8deg);
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .p6-top-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 38mm;
+      background: var(--K);
+    }
+
+    .p6-label-top {
+      position: absolute;
+      top: 9mm;
+      left: 12mm;
+      font-size: 5.5pt;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .p6-h1 {
+      position: absolute;
+      top: 15mm;
+      left: 12mm;
+      font-size: 32pt;
+      font-weight: 700;
+      line-height: 0.88;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--W);
+    }
+
+    .p6-tagline {
+      position: absolute;
+      top: 41mm;
+      left: 12mm;
+      right: 10mm;
+      font-size: 8.5pt;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--K);
+      border-bottom: 1.5pt solid var(--K);
+      padding-bottom: 3mm;
+    }
+
+    .p6-steps {
+      position: absolute;
+      top: 57mm;
+      left: 12mm;
+      right: 10mm;
+      bottom: 22mm;
+    }
+
+    .p6-step {
+      display: grid;
+      grid-template-columns: 12mm 1fr;
+      gap: 2mm;
+      padding: 2mm 0;
+      border-bottom: 0.3pt solid #ccc;
+    }
+
+    .p6-num {
+      font-size: 28pt;
+      font-weight: 700;
+      line-height: 1;
+      opacity: 0.08;
+      letter-spacing: -0.04em;
+    }
+
+    .p6-q {
+      font-size: 8pt;
+      font-weight: 700;
+      line-height: 1.2;
+      padding-top: 1.5mm;
+    }
+
+    .p6-opts {
+      font-size: 5.8pt;
+      opacity: 0.5;
+      margin-top: 1mm;
+      line-height: 1.5;
+    }
+
+    .p6-cta-bar {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 20mm;
+      background: var(--K);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12mm;
+    }
+
+    .p6-cta-url {
+      font-size: 14pt;
+      font-weight: 700;
+      color: var(--W);
+      letter-spacing: 0.04em;
+    }
+
+    .p6-cta-arr {
+      font-size: 22pt;
+      color: var(--W);
+      font-weight: 700;
+    }
+
+    /* ════════════════════════════════════════════════════
+       P7 — CÓMO USARLO / QR
+    ════════════════════════════════════════════════════ */
+    .p7 { background: var(--W); }
+
+    .p7-stripe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 18mm;
+      height: 100%;
+      background: var(--K);
+    }
+
+    .p7-stripe-text {
+      position: absolute;
+      top: 0; left: 0;
+      width: 18mm;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 5pt;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .p7-h1 {
+      position: absolute;
+      top: 10mm;
+      left: 24mm;
+      right: 8mm;
+      font-size: 26pt;
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .p7-steps {
+      position: absolute;
+      top: 50mm;
+      left: 24mm;
+      right: 8mm;
+    }
+
+    .p7-step {
+      display: grid;
+      grid-template-columns: 9mm 1fr;
+      gap: 2mm;
+      padding: 2.5mm 0;
+      border-bottom: 0.3pt solid #ccc;
+    }
+
+    .p7-num {
+      font-size: 22pt;
+      font-weight: 700;
+      line-height: 1;
+      opacity: 0.09;
+    }
+
+    .p7-text {
+      font-size: 7.5pt;
+      font-weight: 400;
+      line-height: 1.65;
+      padding-top: 1mm;
+    }
+
+    .p7-text strong { font-weight: 700; }
+
+    .p7-qr-block {
+      position: absolute;
+      bottom: 8mm;
+      left: 24mm;
+      right: 8mm;
+      display: flex;
+      gap: 0;
+      border: 4pt solid var(--K);
+    }
+
+    .p7-qr-box {
+      width: 30mm;
+      height: 30mm;
+      border-right: 4pt solid var(--K);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5pt;
+      opacity: 0.2;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .p7-qr-right {
+      flex: 1;
+      padding: 4mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2mm;
+    }
+
+    .p7-qr-url {
+      font-size: 15pt;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .p7-qr-sub {
+      font-size: 6pt;
+      opacity: 0.45;
+      line-height: 1.55;
+    }
+
+    /* ════════════════════════════════════════════════════
+       P8 — CONTRAPORTADA
+    ════════════════════════════════════════════════════ */
+    .p8 { background: var(--K); }
+
+    .p8-logo {
+      position: absolute;
+      top: 12mm;
+      left: 12mm;
+      width: 68mm;
+    }
+
+    .p8-bg-text {
+      position: absolute;
+      bottom: 26mm;
+      left: -4mm;
+      font-size: 150pt;
+      font-weight: 700;
+      line-height: 0.85;
+      letter-spacing: -0.05em;
+      color: rgba(255,255,255,0.04);
+      user-select: none;
+    }
+
+    .p8-tagline {
+      position: absolute;
+      bottom: 34mm;
+      left: 12mm;
+      right: 10mm;
+      font-size: 32pt;
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      color: var(--W);
+      text-transform: uppercase;
+    }
+
+    .p8-tagline .dim { opacity: 0.25; }
+
+    .p8-url-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      height: 28mm;
+      background: var(--W);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12mm;
+      border-top: 5pt solid var(--W);
+    }
+
+    .p8-url {
+      font-size: 18pt;
+      font-weight: 700;
+      color: var(--K);
+      letter-spacing: 0.03em;
+    }
+
+    .p8-logo-small {
+      height: 12mm;
+    }
+
+    .p8-meta {
+      position: absolute;
+      bottom: 30mm;
+      right: 10mm;
+      font-size: 5pt;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.18);
+      text-align: right;
+      line-height: 1.8;
+    }
+
+    /* ════════════════════════════════════════════════════
+       PRINT / SCREEN
+    ════════════════════════════════════════════════════ */
+    @media print {
+      html, body { background: none; }
+      .page { margin: 0; page-break-after: always; box-shadow: none; }
+      .page:last-child { page-break-after: avoid; }
+      .instructions { display: none !important; }
+      @page { size: 148mm 210mm; margin: 0; }
+    }
+
+    @media screen {
+      .page { box-shadow: 0 8px 40px rgba(0,0,0,0.6); }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- INSTRUCCIONES (solo pantalla) -->
+<div class="instructions" style="width:148mm;margin:8mm auto 0;background:#000;color:#fff;padding:5mm 10mm;font-family:'Rajdhani',sans-serif;font-size:7.5pt;line-height:1.85;font-weight:500;">
+  <strong style="letter-spacing:0.15em;text-transform:uppercase;">↓ Instrucciones de impresión</strong><br>
+  1 · Archivo → Imprimir → <strong>Guardar como PDF</strong> · Tamaño A5 · Sin márgenes<br>
+  2 · Copistería: <strong>"Cuadernillo A3, doble cara, doblar y grapar al centro, B/N"</strong><br>
+  3 · Inserta QR de nave11.app en el recuadro de la página 7 antes de imprimir
+</div>
+
+
+<!-- ═══ P1 — PORTADA ═══════════════════════════════════ -->
+<div class="page p1">
+
+  <img src="src/images/nave11_logo_white.png" alt="Nave11" class="p1-logo" />
+
+  <div class="p1-numero">11</div>
+
+  <div class="p1-tagline-a">
+    Cara<br>ban<br>chel<br>no es<br>una<br>ten<br>den<br>cia.
+  </div>
+
+  <div class="p1-tagline-b">
+    56 espacios. Galerías, naves,<br>
+    bares históricos, librerías,<br>
+    salas de música y mucho más.
+  </div>
+
+  <div class="p1-side">Distrito 11 · Carabanchel · Madrid · 2026</div>
+
+  <div class="p1-bar">
+    <span class="p1-url">nave11.app</span>
+    <img src="src/images/isotipo_black.png" alt="" class="p1-isotipo" />
+    <span class="p1-year">Madrid · 2026</span>
+  </div>
+
+</div>
+
+
+<!-- ═══ P2 — MANIFIESTO ════════════════════════════════ -->
+<div class="page p2">
+
+  <div class="p2-bg-num">170</div>
+
+  <div class="p2-label">Manifiesto</div>
+
+  <div class="p2-h1">
+    Carabanchel<br>tiene 170+<br>espacios<br>culturales.
+  </div>
+
+  <div class="p2-sub">
+    Hasta ahora no había un mapa.
+  </div>
+
+  <p class="p2-body">
+    El ecosistema más denso y auténtico de Madrid está completamente invisibilizado. El Ayuntamiento tiene una web institucional. Círculo Carabanchel lista solo galerías. El resto —naves, bares históricos, librerías, salas de música, comercios— no aparece en ningún sitio usable.<br><br>
+    Sin agenda institucional. Sin patrocinadores. Sin publicidad. Un proyecto vecinal e independiente, hecho desde el barrio para el barrio.
+  </p>
+
+  <div class="p2-pull-block">
+    <div class="p2-pull-text">
+      Nave11 mapea TODO el ecosistema. No solo las galerías con nombre. Los bares de toda la vida. Las naves donde trabajan los artistas.
+    </div>
+    <div class="p2-pull-tiny">nave11.app · El mapa que faltaba</div>
+  </div>
+
+</div>
+
+
+<!-- ═══ P3 — LO QUE ES / NO ES ════════════════════════ -->
+<div class="page p3">
+
+  <div class="p3-bg-slash"></div>
+
+  <div class="p3-title-left">
+    El<br>Cara<br>ban<br>chel<br>real.
+  </div>
+
+  <div class="p3-no-list">
+    <div class="p3-head p3-head-w">✕ NO es</div>
+    <div class="p3-li p3-li-w"><span class="p3-mark">✕</span><span>Guía turística oficial</span></div>
+    <div class="p3-li p3-li-w"><span class="p3-mark">✕</span><span>Marketplace de reservas</span></div>
+    <div class="p3-li p3-li-w"><span class="p3-mark">✕</span><span>Web institucional</span></div>
+    <div class="p3-li p3-li-w"><span class="p3-mark">✕</span><span>Solo arte contemporáneo</span></div>
+    <div class="p3-li p3-li-w"><span class="p3-mark">✕</span><span>Un proyecto que descubre el barrio</span></div>
+    <div class="p3-li p3-li-w"><span class="p3-mark">✕</span><span>Medio con agenda editorial</span></div>
+  </div>
+
+  <div class="p3-yes-list">
+    <div class="p3-head p3-head-k">✓ SÍ es</div>
+    <div class="p3-li p3-li-k"><span class="p3-mark">✓</span><span>Proyecto vecinal independiente</span></div>
+    <div class="p3-li p3-li-k"><span class="p3-mark">✓</span><span>El mapa más completo del Distrito 11</span></div>
+    <div class="p3-li p3-li-k"><span class="p3-mark">✓</span><span>Galerías y bares de 1967, juntos</span></div>
+    <div class="p3-li p3-li-k"><span class="p3-mark">✓</span><span>Para descubrir, no para consumir</span></div>
+    <div class="p3-li p3-li-k"><span class="p3-mark">✓</span><span>Hecho desde el barrio</span></div>
+    <div class="p3-li p3-li-k"><span class="p3-mark">✓</span><span>Sin publicidad · Sin patrocinadores</span></div>
+    <div class="p3-li p3-li-k"><span class="p3-mark">✓</span><span>El mapa que ya era necesario</span></div>
+  </div>
+
+  <div class="p3-words-strip">
+    <div class="p3-word-block inv-block">
+      <span class="p3-w-main p3-w-inv">Directo</span>
+      <span class="p3-w-sub p3-w-inv">Sin rodeos ni turismo</span>
+    </div>
+    <div class="p3-word-block">
+      <span class="p3-w-main">Auténtico</span>
+      <span class="p3-w-sub">La voz del barrio</span>
+    </div>
+    <div class="p3-word-block inv-block">
+      <span class="p3-w-main p3-w-inv">Completo</span>
+      <span class="p3-w-sub p3-w-inv">Los 56 espacios</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══ P4 — CATEGORÍAS ════════════════════════════════ -->
+<div class="page p4">
+
+  <div class="p4-giant">CAT</div>
+
+  <div class="p4-label">El directorio</div>
+
+  <div class="p4-h1">56 espacios.<br>15 categorías.</div>
+
+  <div class="p4-cols">
+
+    <div>
+      <div class="p4-sec">
+        <span class="p4-sec-h">——— Cultura</span>
+        <div class="p4-item">
+          <span class="p4-iname">Galerías</span>
+          <span class="p4-idesc">Arte contemporáneo. Las primeras al sur.</span>
+        </div>
+        <div class="p4-item">
+          <span class="p4-iname">Naves</span>
+          <span class="p4-idesc">Donde ocurre lo que no sale en prensa.</span>
+        </div>
+        <div class="p4-item">
+          <span class="p4-iname">Estudios</span>
+          <span class="p4-idesc">Los artistas que hacen posible el resto.</span>
+        </div>
+        <div class="p4-item">
+          <span class="p4-iname">Salas</span>
+          <span class="p4-idesc">Rock, teatro, ensayo. Sin prensa.</span>
+        </div>
+        <div class="p4-item">
+          <span class="p4-iname">Música/danza</span>
+          <span class="p4-idesc">Dos conservatorios. Europa entera.</span>
+        </div>
+        <div class="p4-item">
+          <span class="p4-iname">Arte digital</span>
+          <span class="p4-idesc">La tecnología tiene su nave aquí.</span>
+        </div>
+        <div class="p4-item" style="border:none;">
+          <span class="p4-iname">Centros cult.</span>
+          <span class="p4-idesc">Los 5 espacios municipales.</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="p4-sec">
+        <span class="p4-sec-h">——— Gastronomía</span>
+        <div class="p4-item">
+          <span class="p4-iname">Vinos</span>
+          <span class="p4-idesc">Naturales, de grifo, con historia.</span>
+        </div>
+        <div class="p4-item">
+          <span class="p4-iname">Cerveza</span>
+          <span class="p4-idesc">Fabricada aquí mismo.</span>
+        </div>
+        <div class="p4-item">
+          <span class="p4-iname">Café</span>
+          <span class="p4-idesc">Especialidad. Llegaron sin ruido.</span>
+        </div>
+        <div class="p4-item">
+          <span class="p4-iname">Restaurantes</span>
+          <span class="p4-idesc">Creativa, vegana y de toda la vida.</span>
+        </div>
+        <div class="p4-item">
+          <span class="p4-iname">Tapas</span>
+          <span class="p4-idesc">Neotabernas y las de siempre.</span>
+        </div>
+        <div class="p4-item" style="border:none; margin-bottom:2mm;">
+          <span class="p4-iname">Castizo</span>
+          <span class="p4-idesc">Los que estaban antes. Seguirán.</span>
+        </div>
+      </div>
+
+      <div class="p4-sec">
+        <span class="p4-sec-h">——— Barrio</span>
+        <div class="p4-item">
+          <span class="p4-iname">Librerías</span>
+          <span class="p4-idesc">Independientes. Con criterio.</span>
+        </div>
+        <div class="p4-item" style="border:none;">
+          <span class="p4-iname">Comercios</span>
+          <span class="p4-idesc">Los que hacen el barrio.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ═══ P5 — IMPRESCINDIBLES ══════════════════════════ -->
+<div class="page p5">
+
+  <div class="p5-side-text">Una selección · Directorio completo en nave11.app</div>
+
+  <div class="p5-h1">
+    Ocho<br>
+    <span class="dim">sitios</span><br>
+    impres<br>
+    <span class="dim">cin</span>br>
+    dibles.
+  </div>
+
+  <div class="p5-list">
+
+    <div class="p5-item">
+      <span class="p5-n">01</span>
+      <div>
+        <div class="p5-name">Gruta 77</div>
+        <div class="p5-addr">C. Cuclillo, 6 · La sala underground</div>
+      </div>
+      <span class="p5-tag">Sala</span>
+    </div>
+
+    <div class="p5-item">
+      <span class="p5-n">02</span>
+      <div>
+        <div class="p5-name">VETA by Fer Francés</div>
+        <div class="p5-addr">C. Antoñita Jiménez, 31-43</div>
+      </div>
+      <span class="p5-tag">Galería</span>
+    </div>
+
+    <div class="p5-item">
+      <span class="p5-n">03</span>
+      <div>
+        <div class="p5-name">Casa de los Minutejos</div>
+        <div class="p5-addr">C. Antonio de Leyva, 19 · Desde 1967</div>
+      </div>
+      <span class="p5-tag">Castizo</span>
+    </div>
+
+    <div class="p5-item">
+      <span class="p5-n">04</span>
+      <div>
+        <div class="p5-name">Cervezas Patanel</div>
+        <div class="p5-addr">Av. Pedro Diez, 21 · Fabricada aquí</div>
+      </div>
+      <span class="p5-tag">Cerveza</span>
+    </div>
+
+    <div class="p5-item">
+      <span class="p5-n">05</span>
+      <div>
+        <div class="p5-name">Librería Derivas</div>
+        <div class="p5-addr">C. Jacinto Verdaguer, 17</div>
+      </div>
+      <span class="p5-tag">Librería</span>
+    </div>
+
+    <div class="p5-item">
+      <span class="p5-n">06</span>
+      <div>
+        <div class="p5-name">Nave Oporto</div>
+        <div class="p5-addr">Av. Pedro Diez, 25</div>
+      </div>
+      <span class="p5-tag">Nave</span>
+    </div>
+
+    <div class="p5-item">
+      <span class="p5-n">07</span>
+      <div>
+        <div class="p5-name">Casa Enriqueta</div>
+        <div class="p5-addr">C. Gral. Ricardos, 19 · Casquería pura</div>
+      </div>
+      <span class="p5-tag">Castizo</span>
+    </div>
+
+    <div class="p5-item" style="border:none;">
+      <span class="p5-n">08</span>
+      <div>
+        <div class="p5-name">Matilda</div>
+        <div class="p5-addr">C. Matilde Hernández, 32</div>
+      </div>
+      <span class="p5-tag">Sala</span>
+    </div>
+
+  </div>
+
+  <img src="src/images/nave11_logo_white.png" alt="" class="p5-logo-footer" />
+
+</div>
+
+
+<!-- ═══ P6 — GENERADOR ════════════════════════════════ -->
+<div class="page p6">
+
+  <div class="p6-rotate">HAZTE UN PLAN</div>
+
+  <div class="p6-top-bar"></div>
+
+  <div class="p6-label-top">Funcionalidad · nave11.app/planes</div>
+
+  <div class="p6-h1">
+    Hazte<br>un plan.
+  </div>
+
+  <div class="p6-tagline">
+    Dinos qué te apetece.<br>Nosotros ponemos el mapa.
+  </div>
+
+  <div class="p6-steps">
+
+    <div class="p6-step">
+      <span class="p6-num">1</span>
+      <div>
+        <div class="p6-q">¿Cuánto tiempo tienes?</div>
+        <div class="p6-opts">Un rato (1h) · Una tarde (3h) · Día completo (6h+)</div>
+      </div>
+    </div>
+
+    <div class="p6-step">
+      <span class="p6-num">2</span>
+      <div>
+        <div class="p6-q">¿Qué quieres ver?</div>
+        <div class="p6-opts">Galerías · Naves y espacios alternativos · Arte urbano · De todo</div>
+      </div>
+    </div>
+
+    <div class="p6-step">
+      <span class="p6-num">3</span>
+      <div>
+        <div class="p6-q">¿Con quién vas?</div>
+        <div class="p6-opts">Solo/a · En pareja · Con amigos · Con niños</div>
+      </div>
+    </div>
+
+    <div class="p6-step">
+      <span class="p6-num">4</span>
+      <div>
+        <div class="p6-q">¿Qué te apetece tomar?</div>
+        <div class="p6-opts">Vino natural · Café y brunch · Cerveza artesana · Cualquier cosa</div>
+      </div>
+    </div>
+
+    <div class="p6-step" style="border:none;">
+      <span class="p6-num">5</span>
+      <div>
+        <div class="p6-q">¿Algo más? <span style="opacity:0.4;font-weight:400;">(opcional)</span></div>
+        <div class="p6-opts">Librería · Pan artesanal · Nada en especial</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="p6-cta-bar">
+    <div class="p6-cta-url">nave11.app/planes</div>
+    <div class="p6-cta-arr">→</div>
+  </div>
+
+</div>
+
+
+<!-- ═══ P7 — CÓMO USARLO ══════════════════════════════ -->
+<div class="page p7">
+
+  <div class="p7-stripe"></div>
+  <div class="p7-stripe-text">nave11.app · Carabanchel · Distrito 11</div>
+
+  <div class="p7-h1">
+    Cómo<br>usar<br>nave11.app
+  </div>
+
+  <div class="p7-steps">
+
+    <div class="p7-step">
+      <span class="p7-num">1</span>
+      <div class="p7-text">
+        <strong>Entra en nave11.app</strong> desde el móvil o el ordenador. Verás el directorio completo: 56 espacios del Distrito 11.
+      </div>
+    </div>
+
+    <div class="p7-step">
+      <span class="p7-num">2</span>
+      <div class="p7-text">
+        <strong>Filtra</strong> por galerías, bares históricos, librerías, cerveza… O usa el buscador si sabes lo que buscas.
+      </div>
+    </div>
+
+    <div class="p7-step">
+      <span class="p7-num">3</span>
+      <div class="p7-text">
+        <strong>Activa el mapa</strong> para ver todos los espacios geolocalizados y planificar tu ruta a pie por el barrio.
+      </div>
+    </div>
+
+    <div class="p7-step">
+      <span class="p7-num">4</span>
+      <div class="p7-text">
+        <strong>¿Quieres que alguien lo haga?</strong> El Generador de Planes te propone una ruta personalizada en segundos.
+      </div>
+    </div>
+
+    <div class="p7-step" style="border:none;">
+      <span class="p7-num">5</span>
+      <div class="p7-text">
+        <strong>¿Tu espacio no aparece?</strong> Escríbenos: hola@nave11.app
+      </div>
+    </div>
+
+  </div>
+
+  <div class="p7-qr-block">
+    <div class="p7-qr-box">QR aquí</div>
+    <div class="p7-qr-right">
+      <div class="p7-qr-url">nave11.app</div>
+      <div class="p7-qr-sub">
+        Escanea o escribe la dirección<br>
+        en tu navegador. Móvil y ordenador.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══ P8 — CONTRAPORTADA ════════════════════════════ -->
+<div class="page p8">
+
+  <img src="src/images/nave11_logo_white.png" alt="Nave11" class="p8-logo" />
+
+  <div class="p8-bg-text">EL<br>MAPA</div>
+
+  <div class="p8-tagline">
+    El mapa<br>
+    <span class="dim">que</span><br>
+    faltaba.
+  </div>
+
+  <div class="p8-meta">
+    Proyecto independiente<br>
+    Sin publicidad · 2026<br>
+    hola@nave11.app<br>
+    digitaldementia.es
+  </div>
+
+  <div class="p8-url-bar">
+    <span class="p8-url">nave11.app</span>
+    <img src="src/images/isotipo_black.png" alt="" class="p8-logo-small" />
+  </div>
+
+</div>
+
+
+</body>
+</html>
