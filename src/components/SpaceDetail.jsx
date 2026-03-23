@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from './SpaceDetail.module.css'
 import { toSlug } from '../utils/slug'
+import { trackEvent } from '../utils/analytics'
 
 const DIAS = ['lu', 'ma', 'mi', 'ju', 'vi', 'sa', 'do']
 const DIAS_LABEL = { lu: 'Lun', ma: 'Mar', mi: 'Mié', ju: 'Jue', vi: 'Vie', sa: 'Sáb', do: 'Dom' }
@@ -41,7 +42,11 @@ function PanelContent({ espacio }) {
             {num_reviews && <span className={styles.reviews}>({num_reviews} reseñas)</span>}
           </p>
         )}
-        <Link to={`/espacio/${toSlug(espacio.nombre)}`} className={styles.fichaLink}>
+        <Link
+          to={`/espacio/${toSlug(espacio.nombre)}`}
+          className={styles.fichaLink}
+          onClick={() => trackEvent('espacio_ficha_completa', { nombre, categoria: catLabel })}
+        >
           Ver ficha completa →
         </Link>
       </div>
@@ -79,17 +84,20 @@ function PanelContent({ espacio }) {
 
         <div className={styles.contacto}>
           {telefono && (
-            <a href={`tel:${telefono}`} className={styles.contactLink}>
+            <a href={`tel:${telefono}`} className={styles.contactLink}
+              onClick={() => trackEvent('espacio_telefono', { nombre })}>
               <span className={styles.contactIcon}>☏</span> {telefono}
             </a>
           )}
           {web && (
-            <a href={web} target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
+            <a href={web} target="_blank" rel="noopener noreferrer" className={styles.contactLink}
+              onClick={() => trackEvent('espacio_web', { nombre, url: web })}>
               <span className={styles.contactIcon}>↗</span> Web oficial
             </a>
           )}
           {instagram && (
-            <a href={`https://instagram.com/${instagram}`} target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
+            <a href={`https://instagram.com/${instagram}`} target="_blank" rel="noopener noreferrer" className={styles.contactLink}
+              onClick={() => trackEvent('espacio_instagram', { nombre, instagram })}>
               <span className={styles.contactIcon}>◎</span> @{instagram}
             </a>
           )}

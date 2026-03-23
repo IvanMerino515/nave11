@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Header.module.css'
 import isotipo from '../images/isotipo_black.png'
+import { trackEvent } from '../utils/analytics'
 
 const CATEGORIAS_CULTURA = [
   { value: 'galeria', label: 'Galerías' },
@@ -38,7 +39,11 @@ export default function Header({ vista, setVista, filtros }) {
   const [filtersOpen, setFiltersOpen] = useState(true)
   const manualOverride = useRef(false)
 
-  const toggle = (val) => setCategoria(categoria === val ? '' : val)
+  const toggle = (val) => {
+    const next = categoria === val ? '' : val
+    if (next) trackEvent('filtro_categoria', { categoria: next })
+    setCategoria(next)
+  }
   const hayFiltrosActivos = categoria !== '' || soloEntradaLibre || soloAbreSabados || soloHistorico || query !== ''
 
   const handleFilterToggle = () => {
@@ -68,8 +73,8 @@ export default function Header({ vista, setVista, filtros }) {
         </div>
         <div className={styles.navRight}>
           <div className={styles.viewToggle}>
-            <button className={`${styles.viewBtn} ${vista === 'lista' ? styles.active : ''}`} onClick={() => setVista('lista')}>Lista</button>
-            <button className={`${styles.viewBtn} ${vista === 'mapa' ? styles.active : ''}`} onClick={() => setVista('mapa')}>Mapa</button>
+            <button className={`${styles.viewBtn} ${vista === 'lista' ? styles.active : ''}`} onClick={() => { setVista('lista'); trackEvent('vista_cambiada', { vista: 'lista' }) }}>Lista</button>
+            <button className={`${styles.viewBtn} ${vista === 'mapa' ? styles.active : ''}`} onClick={() => { setVista('mapa'); trackEvent('vista_cambiada', { vista: 'mapa' }) }}>Mapa</button>
             <Link to="/planes" className={styles.viewBtn}>Planes</Link>
           </div>
           <button
@@ -89,6 +94,7 @@ export default function Header({ vista, setVista, filtros }) {
           placeholder="Busca por nombre, tipo o disciplina..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onBlur={(e) => { if (e.target.value.length > 1) trackEvent('busqueda', { texto: e.target.value }) }}
         />
 
         <div className={styles.filterRow}>

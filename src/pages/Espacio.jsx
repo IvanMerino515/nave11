@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { trackEvent } from '../utils/analytics'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import espacios from '../data/espacios.json'
 import { toSlug } from '../utils/slug'
@@ -279,13 +280,15 @@ export default function Espacio() {
                     {direccion}
                   </p>
                   {telefono && (
-                    <a href={`tel:${telefono}`} className={styles.contactLink}>
+                    <a href={`tel:${telefono}`} className={styles.contactLink}
+                      onClick={() => trackEvent('espacio_telefono', { nombre })}>
                       <span className={styles.contactIcon}>☏</span>
                       {telefono}
                     </a>
                   )}
                   {web && (
-                    <a href={web} target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
+                    <a href={web} target="_blank" rel="noopener noreferrer" className={styles.contactLink}
+                      onClick={() => trackEvent('espacio_web', { nombre, url: web })}>
                       <span className={styles.contactIcon}>↗</span>
                       Web oficial
                     </a>
@@ -296,6 +299,7 @@ export default function Espacio() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.contactLink}
+                      onClick={() => trackEvent('espacio_instagram', { nombre, instagram })}
                     >
                       <span className={styles.contactIcon}>◐</span>
                       @{instagram}
@@ -310,6 +314,7 @@ export default function Espacio() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.mapLink}
+                onClick={() => trackEvent('espacio_maps', { nombre })}
               >
                 Ver en Google Maps ↗
               </a>

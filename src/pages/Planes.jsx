@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { usePlanGenerator } from '../hooks/usePlanGenerator'
 import isotipo from '../images/isotipo_black.png'
 import styles from './Planes.module.css'
+import { trackEvent } from '../utils/analytics'
 
 const CATEGORIA_LABEL = {
   galeria: 'Galería', nave: 'Nave', estudio: 'Estudio',
@@ -106,7 +107,15 @@ export default function Planes() {
           ))}
         </div>
 
-        <button className={styles.cta} onClick={generar}>
+        <button className={styles.cta} onClick={() => {
+          generar()
+          trackEvent('plan_generado', {
+            tiempo: respuestas.tiempo,
+            cultura: respuestas.cultura,
+            compania: respuestas.compania,
+            gastro: respuestas.gastro,
+          })
+        }}>
           → Generar plan
         </button>
 

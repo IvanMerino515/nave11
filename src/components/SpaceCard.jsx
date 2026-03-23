@@ -1,4 +1,5 @@
 import styles from './SpaceCard.module.css'
+import { trackEvent } from '../utils/analytics'
 
 const CATEGORIA_LABEL = {
   galeria: 'Galería',
@@ -32,7 +33,13 @@ export default function SpaceCard({ espacio, onClick }) {
   const esGastro = categoria === 'hosteleria'
 
   return (
-    <article className={`${styles.card} ${destacado ? styles.destacado : ''} ${esGastro ? styles.gastro : ''}`} onClick={() => onClick(espacio)}>
+    <article
+      className={`${styles.card} ${destacado ? styles.destacado : ''} ${esGastro ? styles.gastro : ''}`}
+      onClick={() => {
+        trackEvent('espacio_click', { nombre, categoria: catLabel })
+        onClick(espacio)
+      }}
+    >
       <div className={styles.left}>
         <div className={styles.metaRow}>
           <span className={`${styles.cat} ${esGastro ? styles.catGastro : ''}`}>{catLabel}</span>
