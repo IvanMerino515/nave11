@@ -2,20 +2,8 @@ import { Link } from 'react-router-dom'
 import { usePlanGenerator } from '../hooks/usePlanGenerator'
 import isotipo from '../images/isotipo_black.png'
 import styles from './Planes.module.css'
+import PlanModal from '../components/PlanModal'
 import { trackEvent } from '../utils/analytics'
-
-const CATEGORIA_LABEL = {
-  galeria: 'Galería', nave: 'Nave', estudio: 'Estudio',
-  musica: 'Música', sala: 'Sala', fotografia: 'Arte digital',
-  cultural: 'Cultural', libreria: 'Librería', comercio: 'Comercio',
-}
-
-const TIPO_LABEL = {
-  vinos: 'Vinos', cerveza: 'Cerveza', cafe: 'Café',
-  restaurante: 'Restaurante', tapas: 'Tapas', castizo: 'Bar castizo',
-}
-
-const TIEMPO_LABEL = { rato: '~1h', tarde: '~3h', dia: '~6h' }
 
 const PREGUNTAS = [
   {
@@ -69,7 +57,22 @@ const PREGUNTAS = [
 ]
 
 export default function Planes() {
-  const { respuestas, responder, plan, generar } = usePlanGenerator()
+  const { respuestas, responder, plan, generar, cerrarPlan } = usePlanGenerator()
+
+  function handleGenerar() {
+    generar()
+    trackEvent('plan_generado', {
+      tiempo: respuestas.tiempo,
+      cultura: respuestas.cultura,
+      compania: respuestas.compania,
+      gastro: respuestas.gastro,
+    })
+  }
+
+  function handleRegenerar() {
+    generar()
+    trackEvent('plan_regenerado', { tiempo: respuestas.tiempo })
+  }
 
   return (
     <div className={styles.page}>
@@ -107,70 +110,25 @@ export default function Planes() {
           ))}
         </div>
 
-        <button className={styles.cta} onClick={() => {
-          generar()
-          trackEvent('plan_generado', {
-            tiempo: respuestas.tiempo,
-            cultura: respuestas.cultura,
-            compania: respuestas.compania,
-            gastro: respuestas.gastro,
-          })
-        }}>
+        <button className={styles.cta} onClick={handleGenerar}>
           → Generar plan
         </button>
-
-        {plan && plan.paradas.length > 0 && (
-          <div className={styles.resultado}>
-            <div className={styles.resultadoHeader}>
-              <h2 className={styles.resultadoTitulo}>Tu tarde en Carabanchel</h2>
-              <p className={styles.resultadoMeta}>
-                {plan.paradas.length} paradas · {plan.distanciaKm} km a pie · {TIEMPO_LABEL[plan.tiempo]}
-              </p>
-            </div>
-
-            <div className={styles.paradas}>
-              {plan.paradas.map((e, i) => (
-                <div key={e.id} className={styles.parada}>
-                  <div className={styles.paradaNum}>
-                    <span className={styles.num}>{i + 1}</span>
-                    {i < plan.paradas.length - 1 && <div className={styles.linea} />}
-                  </div>
-                  <div className={styles.paradaInfo}>
-                    <span className={styles.paradaCat}>
-                      {e.categoria === 'hosteleria'
-                        ? TIPO_LABEL[e.tipo_hosteleria] ?? 'Hostelería'
-                        : CATEGORIA_LABEL[e.categoria] ?? e.categoria}
-                    </span>
-                    <h3 className={styles.paradaNombre}>{e.nombre}</h3>
-                    <p className={styles.paradaDireccion}>{e.direccion}</p>
-                    <p className={styles.paradaDesc}>{e.descripcion}</p>
-                    {e.entrada_libre && (
-                      <span className={styles.paradaBadge}>Entrada libre</span>
-                    )}
-                    {e.precio && (
-                      <span className={styles.paradaBadge}>{e.precio}</span>
-                    )}
-                    {e.fundado_en && (
-                      <span className={styles.paradaBadge}>Desde {e.fundado_en}</span>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <button className={styles.regenerar} onClick={generar}>
-              Regenerar ruta
-            </button>
-          </div>
-        )}
-
-        {plan && plan.paradas.length === 0 && (
-          <p className={styles.empty}>
-            No hay paradas disponibles con esos filtros.<br />
-            Prueba con más tiempo o menos restricciones.
-          </p>
-        )}
       </main>
+
+      {plan && plan.paradas.length > 0 && (
+        <PlanModal
+          plan={plan}
+          onClose={cerrarPlan}
+          onRegenerar={handleRegenerar}
+        />
+      )}
+
+      {plan && plan.paradas.length === 0 && (
+        <p className={styles.empty}>
+          No hay paradas disponibles con esos filtros.<br />
+          Prueba con más tiempo o menos restricciones.
+        </p>
+      )}
     </div>
   )
 }

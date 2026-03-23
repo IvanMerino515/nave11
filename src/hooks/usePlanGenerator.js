@@ -161,5 +161,7 @@ export function usePlanGenerator() {
     })
   }
 
-  return { respuestas, responder, plan, generar }
+  function cerrarPlan() { setPlan(null) }
+
+  return { respuestas, responder, plan, generar, cerrarPlan }
 }

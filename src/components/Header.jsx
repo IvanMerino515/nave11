@@ -67,10 +67,10 @@ export default function Header({ vista, setVista, filtros }) {
   return (
     <header className={styles.header}>
       <div className={styles.nav}>
-        <div className={styles.brand}>
+        <Link to="/" className={styles.brand}>
           <img src={isotipo} alt="Nave11" className={styles.logo} />
           <span className={styles.brandSub}>Mapa cultural de Carabanchel</span>
-        </div>
+        </Link>
         <div className={styles.navRight}>
           <div className={styles.viewToggle}>
             <button className={`${styles.viewBtn} ${vista === 'lista' ? styles.active : ''}`} onClick={() => { setVista('lista'); trackEvent('vista_cambiada', { vista: 'lista' }) }}>Lista</button>
