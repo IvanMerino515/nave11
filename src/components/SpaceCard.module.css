@@ -144,3 +144,32 @@
 .ratingDot {
   color: var(--color-text);
 }
+
+@media (max-width: 600px) {
+  .card {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .left {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .descripcion {
+    display: none;
+  }
+
+  .right {
+    flex: 0 0 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .tags {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
